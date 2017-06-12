@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="card transparent">
+    <div class="row profileInfo">
+      <div class="center col s12 profile-pic">
+        <img class="circle responsive-img" style="width:100px;height=100px;" src="https://lh3.googleusercontent.com/-W2XryVdi-lA/U6tSAh3SsbI/AAAAAAAAFGY/ZHJiUEcR_Zs/w480-h480/avatar%2Bmaterial%2Bdesign.png" alt="" />
+        <p class="black-text center-align">{{profile.user.profile.name}}</p>
+      </div>
+    </div>
+    <div class="card-image" style="border-bottom: 1px solid #eee">
+      <div class="card-content">
+        <div class="row white-text center-align">
+          <div class="col s4"><span class="user-location black-text"><i class="material-icons grey-text">room</i>----</span></div>
+          <div class="col s4"><span class="user-phone black-text"><i class="material-icons grey-text">smartphone</i>{{profile.user.profile.phoneNumber}}</span></div>
+          <div class="col s4"><span class="user-email truncate black-text"><i class="material-icons grey-text">email</i>{{profile.user.profile.email}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //Second Row -->
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s5"><a class="active" href="#test1">profile</a></li>
+        <li class="tab col s5"><a href="#test2">Bookings</a></li>
+      </ul>
+    </div>
+    <!-- //First Table Content -->
+    <div id="test1" class="col s12">
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img src="https://lh3.googleusercontent.com/-W2XryVdi-lA/U6tSAh3SsbI/AAAAAAAAFGY/ZHJiUEcR_Zs/w480-h480/avatar%2Bmaterial%2Bdesign.png" alt="" class="circle">
+          <span class="title">Mr.</span>
+          <p>{{profile.user.profile.name}}<br>{{profile.user.profile.gender}}</p>
+          <!-- <a href="#!" class="secondary-content"><i class="material-icons">mode_edit</i></a> -->
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle">email</i>
+          <span class="title">Email</span>
+          <p>{{profile.user.profile.email}}</p>
+          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle green">smartphone</i>
+          <span class="title">Phone</span>
+          <p>{{profile.user.profile.phoneNumber}}</p>
+          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle red">perm_contact_calendar</i>
+          <span class="title">Date Of Birth</span>
+          <p>NAN
+          </p>
+          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle red">location_on</i>
+          <span class="title">location</span>
+          <p>NAN
+          </p>
+          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+        </li>
+      </ul>
+    </div>
+    <!-- //First Table Content End-->
+    <!-- //Second Table Content -->
+    <div id="test2" class="col s12">
+      <ul class="collection with-header">
+        <li ng-repeat="booking in profile.bookings" class="collection-item">
+          <b>ShopName :</b> <span>{{salonIdToSalonName(booking.salonId).name}}</span>
+          <br>
+          <b>Services Booked : </b><p ng-repeat="obj in booking.selectedItemsObject">{{obj.service}}-{{obj.subservice}}</p>
+          <br>
+          <b>Payable Amount :</b> <span>{{booking.price}}</span>
+          <br>
+          <b>Date :</b> <span>{{booking.bookingDate}}</span>
+          <br>
+          <b>Time :</b> <span>{{booking.bookingTime}}</span>
+          <a href="" class="secondary-content"><div class="row center">
+            <a ng-click="profile.cancelBooking(booking._id)" id="download-button" class="btn-large waves-effect waves-light orange">Cancel Booking</a>
+          </div>
+        </a>
+        </li>
+      </ul>
+    </div>
+    <!-- //Second Table Content End-->
+  </div>
+</div>
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Edit Profile</h4>
+      <edit-profile></edit-profile>
+    </div>
+  </div>

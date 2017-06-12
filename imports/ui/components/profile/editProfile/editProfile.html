@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12 m10 offset-m1">
+      <input id="name" disabled type="text" class="validate">
+      <label for="name">Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m10 offset-m1">
+      <input id="mission" ng-model="editProfile.userProfile.email" type="text" class="validate" placeholder="Your Email">
+      <label for="mission">Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m10 offset-m1">
+      <input id="mission" ng-model="editProfile.userProfile.phoneNumber" type="text" class="validate" placeholder="Your Mobile Number">
+      <label for="mission">Contact Number</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m10 offset-m1">
+      <input ng-model="editProfile.userProfile.dob" type="text" class="datepicker">
+      <label for="mission">Date Of Birth</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 m10 offset-m1">
+      <input id="mission" ng-model="editProfile.userProfile.address" type="text" class="validate" placeholder="Your Address">
+      <label for="mission">Address</label>
+    </div>
+  </div>
+  <div class="row center">
+    <a class="modal-action waves-effect waves-light btn" ng-click="editProfile.update()">Update</a>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div style="margin-top:50px">
+  <div style="margin-left:50px;" ng-repeat="object in salonDetails.salonAllDetails" ng-init="$last && atNgRepeatFinish()">
+    <!-- //ROW -->
+    <div class="row">
+      <!-- //Row First Column -->
+      <div class="col s8">
+        <div class="card-image">
+          <img style="margin-top:10px;height:400px;width:900px" src={{object.shop.images[1]}} alt="" class="responsive-img" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-action">
+            <div class="col s9 m9 l9 no-pad no-mar">
+              <h5 class="">{{object.shop.name}}</h5>
+              <p>{{object.shop.type}}</p>
+              <p><span class="">{{object.shop.location.shopLocation}}</span><span class=""></span>
+                <!-- <span class="">1.1 km Away</span>? -->
+              </p>
+            </div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>OPENNING HOUR</th>
+              <th>PAYMENT MODE</th>
+              <th>PRICE</th>
+              <th>AMENITIES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{object.shop.openingHours}}</td>
+              <td>{{object.shop.paymentModes[0]}}</td>
+              <td>{{object.shop.price}}</td>
+              <td>{{object.shop.amenities[0]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- //First Column End with three row-->
+      <!-- // Row Second Column -->
+      <div class="card col s3" style="margin-left:10px;width:400px;">
+        <div style="overflow-y: auto; height:400px">
+          <ul class="collection with-header">
+            <li class="collection-header">
+              <h5>Selected Items</h5>
+            </li>
+            <li ng-repeat="checkedOutItem in selectedItems track by $index" style="overflow: auto;height:50px;width:400px" class="collection-item">
+              <div>{{checkedOutItem.subservice}} - ₹{{checkedOutItem.price}}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-action center fixed">
+          <a ng-click="salonDetails.checkout()" style="margin-right:10p" class="center btn-large orange">CheckOut</a>
+        </div>
+      </div>
+      <!-- //Second Column End -->
+    </div>
+    <!-- // SECOND ROW -->
+    <div class="row" style="margin-left:50px;margin-right:350px;">
+      <div ng-repeat="service in object.shop.services track by $index" class="card col s5">
+        <div class="card-image activator waves-effect waves-block waves-light">
+          <img style="width:200px;height:200px" class="activator center" src="http://lorempixel.com/580/250/nature/1">
+        </div>
+        <div class="card-content activator">
+          <span class="activator card-title grey-text text-darken-4">{{service.name}}<i class="material-icons right activator">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{service.name}}<i class="material-icons right">close</i></span>
+          <div class="">
+            <form>
+              <p id="collection-item-id" class="collection-item" ng-repeat="subservice in object.services[service.name] track by $index" style="overflow: visible;">
+                <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" data-valuetwo="{{service.name}}" type="checkbox" class="filled-in" id="{{subservice}}" />
+                <label for="{{subservice}}" style="line-height: 20px">{{subservice.name}} - {{subservice.price}}RS</label>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //Thrid Row -->
+    <h3>More Photos</h3>
+    <div class="carousel">
+      <a ng-repeat="image in object.shop.images" style="width:30%;" class="carousel-item" href=""><img src={{image}}></a>
+    </div>
+
+
+  </div>
+
+</div>
+</div>
