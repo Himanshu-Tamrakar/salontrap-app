@@ -14,15 +14,15 @@ import {
 import {
   name as Home
 } from '../home/home';
-import {
-  name as SalonsList
-} from '../salonsList/salonsList'
-import {
-  name as SalonDetails
-} from '../salonDetails/salonDetails'
-import {
-  name as Checkout
-} from '../checkout/checkout'
+// import {
+//   name as SalonsList
+// } from '../salonsList/salonsList'
+// import {
+//   name as SalonDetails
+// } from '../salonDetails/salonDetails'
+// import {
+//   name as Checkout
+// } from '../checkout/checkout'
 import {
   name as Profile
 } from '../profile/profile'
@@ -58,9 +58,9 @@ export default angular.module(name, [
   ngMaterial,
   Navigation,
   Home,
-  SalonsList,
-  SalonDetails,
-  Checkout,
+  // SalonsList,
+  // SalonDetails,
+  // Checkout,
   Profile,
   EditProfile
   // ngSanitize
