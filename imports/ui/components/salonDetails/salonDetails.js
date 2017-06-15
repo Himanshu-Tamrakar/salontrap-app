@@ -8,6 +8,9 @@ import {
 import {
   ShopServices
 } from '../../../api/shopServices'
+import {
+  name as Checkout
+} from '../checkout/checkout'
 
 class SalonDetails {
   constructor($stateParams, $scope, $reactive, $timeout, $state, $q, $rootScope) {
@@ -99,7 +102,8 @@ const name = 'salonDetails';
 
 export default angular.module(name, [
   angularMeteor,
-  uiRouter
+  uiRouter,
+  Checkout
 ]).component(name, {
   template,
   controllerAs: name,
