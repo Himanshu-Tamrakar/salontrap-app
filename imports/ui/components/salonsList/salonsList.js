@@ -6,6 +6,9 @@ import template from './salonsList.html';
 import {
   Shops
 } from '../../../api/shops'
+import {
+  name as SalonDetails
+} from '../salonDetails/salonDetails'
 
 class SalonsList {
   constructor($scope, $reactive, $stateParams, $timeout) {
@@ -36,7 +39,8 @@ const name = 'salonsList';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  ngMaterial
+  ngMaterial,
+  SalonDetails
 ]).component(name, {
   template,
   controllerAs: name,

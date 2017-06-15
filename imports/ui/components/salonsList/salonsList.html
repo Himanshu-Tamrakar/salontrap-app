@@ -1,48 +1,47 @@
 <div class="container">
-  <div class="row" ng-repeat="shop in salonsList.allShops">
-    <div class="col s10">
-      <div class="card horizontal">
-        <div style="width:40%" class="card-image">
-          <img style="width:100%;height:100%;" src="{{shop.images[0]}}">
+
+  <div class="col" ng-repeat="shop in salonsList.allShops">
+    <h4 class="header">These are all salon of your choice</h4>
+    <div class="card horizontal">
+      <div style="width:30%" class="card-image">
+        <img style="width:300px;height:320px" src="http://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>{{shop.name}}</p>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><span class="type">{{shop.type}}</span></td>
+              </tr>
+              <tr>
+                <td><span class="address">{{shop.location.name}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="divider"></p>
+          <table>
+            <thead>
+              <tr>
+                <th>OPENING HOURS</th>
+                <th>PAYMENT MODE</th>
+                <th>PRICE</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>{{shop.openingHours}}</td>
+                <td><span ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}&emsp;</span></td>
+                <td>{{shop.price}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="card-stacked">
-          <div class="left card-content">
-            <p>{{shop.name}}</p>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td><span class="type">{{shop.type}}</span></td>
-                </tr>
-                <tr>
-                  <td><span class="address">{{shop.location.shopLocation}}</span></td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="divider"></p>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>OPENING HOURS</td>
-                  <td>{{shop.openingHours}}</td>
-                </tr>
-                <tr>
-                  <td>PAYMENT MODE</td>
-                  <td ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}</td>
-                </tr>
-                <tr>
-                  <td>PRICE</td>
-                  <td>
-                    {{shop.price}}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class=" row card-action">
-            <p class="col green-text">Book to get upto 15% <br>cashback<br><span class="grey-text text-lighten-1 d-block">On All services</span></p>
-            <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" id="download-button" class="col right btn waves-effect waves-light orange">book Services</a>
-          </div>
-        </div>
+        <!-- <div class="row card-action"> -->
+          <!-- <p class="col green-text">Book to get upto 15% <br>cashback<br><span class="grey-text text-lighten-1">On All services</span></p> -->
+          <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" id="download-button" class="col right btn waves-effect waves-light">book Services</a>
+        <!-- </div> -->
       </div>
     </div>
   </div>
