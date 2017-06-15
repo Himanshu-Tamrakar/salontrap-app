@@ -37,7 +37,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="object in checkout.checkedOutItems track by $index">
-            <td>{{object.subservice}}<br>{{object.discount}}% OFF</td>
+            <td>{{object.subServiceName}}<br>{{object.discount}}% OFF</td>
             <td class="right">₹{{finalPrice(object.price, object.discount)}}<br><strike>{{object.price}}</strike>
           </tr>
         </tbody>

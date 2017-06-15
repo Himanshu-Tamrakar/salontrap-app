@@ -68,7 +68,7 @@
         <li ng-repeat="booking in profile.bookings" class="collection-item">
           <b>ShopName :</b> <span>{{salonIdToSalonName(booking.salonId).name}}</span>
           <br>
-          <b>Services Booked : </b><p ng-repeat="obj in booking.selectedItemsObject">{{obj.service}}-{{obj.subservice}}</p>
+          <b>Services Booked : </b><p ng-repeat="obj in booking.selectedItemsObject">{{obj.serviceName}}-{{obj.subServiceName}}</p>
           <br>
           <b>Payable Amount :</b> <span>{{booking.price}}</span>
           <br>

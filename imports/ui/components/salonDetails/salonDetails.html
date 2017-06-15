@@ -46,7 +46,7 @@
               <h5>Selected Items</h5>
             </li>
             <li ng-repeat="checkedOutItem in selectedItems track by $index" style="overflow: auto;height:50px;width:400px" class="collection-item">
-              <div>{{checkedOutItem.subservice}} - ₹{{checkedOutItem.price}}
+              <div>{{checkedOutItem.subServiceName}} - ₹{{checkedOutItem.price}}
               </div>
             </li>
           </ul>
@@ -70,10 +70,14 @@
           <span class="card-title grey-text text-darken-4">{{service.name}}<i class="material-icons right">close</i></span>
           <div class="">
             <form>
-              <p id="collection-item-id" class="collection-item" ng-repeat="subservice in object.services[service.name] track by $index" style="overflow: visible;">
+              <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
+                <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
+                <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
+              </p>
+              <!-- <p id="collection-item-id" class="collection-item" ng-repeat="subservice in object.services[service.name] track by $index" style="overflow: visible;">
                 <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" data-valuetwo="{{service.name}}" type="checkbox" class="filled-in" id="{{subservice}}" />
                 <label for="{{subservice}}" style="line-height: 20px">{{subservice.name}} - {{subservice.price}}RS</label>
-              </p>
+              </p> -->
             </form>
           </div>
         </div>
@@ -81,9 +85,9 @@
     </div>
     <!-- //Thrid Row -->
     <h3>More Photos</h3>
-    <div class="carousel">
+    <!-- <div class="carousel">
       <a ng-repeat="image in object.shop.images" style="width:30%;" class="carousel-item" href=""><img src={{image}}></a>
-    </div>
+    </div> -->
 
 
   </div>

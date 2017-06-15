@@ -24,33 +24,40 @@ class SalonDetails {
     $scope.selectedItems = [];
     $scope.getReactively('selectedItems');
 
-    //Temp veriable to initiate ng-chage
+    //Temp veriable to initiate ng-change
     $scope.test = "";
 
-    $scope.onCheckboxClicked = function(superServiceName) {
+    $scope.onCheckboxClicked = function() {
       $scope.selectedItems = []
       $("input:checkbox[name='subservice']:checked").each(function() {
         const item = JSON.parse($(this).val());
-        const object = {
-          'service': $(this).attr( "data-valuetwo" ),
-          'subservice': item.name,
-          'price': item.price,
-          'discount': item.discount
-        }
-        $scope.selectedItems.push(object)
+        // const object = {
+        //   'service': $(this).attr("data-valuetwo"),
+        //   'subservice': item.name,
+        //   'price': item.price,
+        //   'discount': item.discount
+        // }
+        $scope.selectedItems.push(item)
       })
     }
 
-    $scope.atNgRepeatFinish = function() {
-      $(document).ready(function() {
-        $('.carousel').carousel();
+    $scope.filterServices = function(serviceId, services) {
+      var result = services.filter(function(obj) {
+        return obj.serviceId == serviceId;
       });
+      return result
     }
 
+    // $scope.atNgRepeatFinish = function() {
+    //   $(document).ready(function() {
+    //     $('.carousel').carousel();
+    //   });
+    // }
+
     $timeout(function() {
-      $(document).ready(function() {
-        $('.collapsible').collapsible();
-      });
+      // $(document).ready(function() {
+      //   $('.collapsible').collapsible();
+      // });
     }, 100);
 
     this.helpers({
