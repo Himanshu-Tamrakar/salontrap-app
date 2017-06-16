@@ -3,7 +3,7 @@
     <!-- //ROW -->
     <div class="row">
       <!-- //Row First Column -->
-      <div class="col s8">
+      <div class="col s7">
         <div class="card-image">
           <img style="margin-top:10px;height:400px;width:900px" src={{object.shop.images[1]}} alt="" class="responsive-img" />
         </div>
@@ -39,7 +39,7 @@
       </div>
       <!-- //First Column End with three row-->
       <!-- // Row Second Column -->
-      <div class="card col s3" style="margin-left:10px;width:400px;">
+      <div class="card col s3" style="position:fixed;margin-left:800px;width:400px;">
         <div style="overflow-y: auto; height:400px">
           <ul class="collection with-header">
             <li class="collection-header">
@@ -57,40 +57,26 @@
       </div>
       <!-- //Second Column End -->
     </div>
-    <!-- // SECOND ROW -->
-    <div class="row" style="margin-left:50px;margin-right:350px;">
-      <div ng-repeat="service in object.shop.services track by $index" class="card col s5">
-        <div class="card-image activator waves-effect waves-block waves-light">
-          <img style="width:200px;height:200px" class="activator center" src="http://lorempixel.com/580/250/nature/1">
+    <!-- //SECOND ROW -->
+    <h5>BOOK SERVICES</h5>
+    <ul style="width:600px" ng-init="$last && atNgRepeatFinish()" ng-repeat="service in object.shop.services track by $index" class="container collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">menu</i>{{service.name}}</div>
+        <div class="collapsible-body">
+          <form>
+            <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
+              <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
+              <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
+            </p>
+          </form>
         </div>
-        <div class="card-content activator">
-          <span class="activator card-title grey-text text-darken-4">{{service.name}}<i class="material-icons right activator">more_vert</i></span>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{service.name}}<i class="material-icons right">close</i></span>
-          <div class="">
-            <form>
-              <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
-                <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
-                <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
-              </p>
-              <!-- <p id="collection-item-id" class="collection-item" ng-repeat="subservice in object.services[service.name] track by $index" style="overflow: visible;">
-                <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" data-valuetwo="{{service.name}}" type="checkbox" class="filled-in" id="{{subservice}}" />
-                <label for="{{subservice}}" style="line-height: 20px">{{subservice.name}} - {{subservice.price}}RS</label>
-              </p> -->
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+      </li>
+    </ul>
     <!-- //Thrid Row -->
-    <h3>More Photos</h3>
-    <!-- <div class="carousel">
-      <a ng-repeat="image in object.shop.images" style="width:30%;" class="carousel-item" href=""><img src={{image}}></a>
-    </div> -->
-
-
+    <h5>More Photos</h5>
+    <div style="margin-left:10px; width:600px;height:600px;" class="carousel carousel-slider">
+      <a ng-init="$last && atNgRepeatFinishForCarosel()" ng-repeat="image in object.shop.images" class="carousel-item" href="#one!"><img src="{{image}}"></a>
+    </div>
   </div>
-
 </div>
 </div>

@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './salonDetails.html';
 import uiRouter from '@uirouter/angularjs';
+import ngMaterial from 'angular-material';
 import {
   Shops
 } from '../../../api/shops'
@@ -51,16 +52,28 @@ class SalonDetails {
       return result
     }
 
-    // $scope.atNgRepeatFinish = function() {
-    //   $(document).ready(function() {
-    //     $('.carousel').carousel();
-    //   });
-    // }
+    $scope.atNgRepeatFinish = function() {
+      $(document).ready(function() {
+        $('.collapsible').collapsible();
+      });
+      // $(document).ready(function() {
+      //   $('.carousel').carousel();
+      // });
+    }
+
+    $scope.atNgRepeatFinishForCarosel = function() {
+      $(document).ready(function() {
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
+      });
+
+    }
 
     $timeout(function() {
-      // $(document).ready(function() {
-      //   $('.collapsible').collapsible();
-      // });
+
+
+      $(document).ready(function() {
+        $('.collapsible').collapsible();
+      });
     }, 100);
 
     this.helpers({
@@ -103,7 +116,8 @@ const name = 'salonDetails';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  Checkout
+  Checkout,
+  ngMaterial
 ]).component(name, {
   template,
   controllerAs: name,
