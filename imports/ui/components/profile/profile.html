@@ -67,6 +67,7 @@
       <ul class="collection with-header">
         <li ng-repeat="booking in profile.bookings" class="collection-item">
           <b>ShopName :</b> <span>{{salonIdToSalonName(booking.salonId).name}}</span>
+          <span ng-if="booking.markAsComplete" class="right new badge" data-badge-caption="Completed">Booking</span>
           <br>
           <b>Services Booked : </b><p ng-repeat="obj in booking.selectedItemsObject">{{obj.serviceName}}-{{obj.subServiceName}}</p>
           <br>
@@ -75,7 +76,7 @@
           <b>Date :</b> <span>{{booking.bookingDate}}</span>
           <br>
           <b>Time :</b> <span>{{booking.bookingTime}}</span>
-          <a href="" class="secondary-content"><div class="row center">
+          <div ng-if="!booking.markAsComplete" class="row center">
             <a ng-click="profile.cancelBooking(booking._id)" id="download-button" class="btn-large waves-effect waves-light orange">Cancel Booking</a>
           </div>
         </a>
