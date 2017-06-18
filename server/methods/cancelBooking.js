@@ -13,13 +13,13 @@ Meteor.methods({
   'cancelBooking': function(id, userId) {
     Future = Npm.require('fibers/future');
     var myFuture = new Future();
-
+    const user = Meteor.users.findOne({"_id":userId})
     Bookings.update({
       '_id': id
     }, {
       $set: {
         'isCancel': true,
-        'cancelUser': userId
+        'cancelBy': user.profile.name
       }
     }, function(error) {
       if (error) {
