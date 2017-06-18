@@ -92,7 +92,8 @@ class Checkout {
       'bookingDate': selectedDate,
       'bookingTime': selectedTime,
       'isCancel':false,
-      'cancelUser': null
+      'cancelBy':null,
+      'markAsComplete':false
     }
 
     if (selectedDate) {
