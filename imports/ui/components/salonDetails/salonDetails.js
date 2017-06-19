@@ -7,6 +7,12 @@ import {
   Shops
 } from '../../../api/shops'
 import {
+  Locations
+} from '../../../api/locations'
+import {
+  Services
+} from '../../../api/services'
+import {
   ShopServices
 } from '../../../api/shopServices'
 import {
@@ -43,6 +49,18 @@ class SalonDetails {
         // }
         $scope.selectedItems.push(item)
       })
+    }
+
+    $scope.locationIdToLocation = function(id) {
+      if(id) {
+        return Locations.findOne({'_id':id})
+      }
+    }
+
+    $scope.serviceIdToService = function(id) {
+      if(id) {
+        return Services.findOne({'_id':id})
+      }
     }
 
     $scope.filterServices = function(serviceId, services) {

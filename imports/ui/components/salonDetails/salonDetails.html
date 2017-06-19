@@ -12,7 +12,7 @@
             <div class="col s9 m9 l9 no-pad no-mar">
               <h5 class="">{{object.shop.name}}</h5>
               <p>{{object.shop.type}}</p>
-              <p><span class="">{{object.shop.location.shopLocation}}</span><span class=""></span>
+              <p><span class="">{{locationIdToLocation(object.shop.location._id).name}}</span><span class=""></span>
                 <!-- <span class="">1.1 km Away</span>? -->
               </p>
             </div>
@@ -32,7 +32,7 @@
               <td>{{object.shop.openingHours}}</td>
               <td>{{object.shop.paymentModes[0]}}</td>
               <td>{{object.shop.price}}</td>
-              <td>{{object.shop.amenities[0]}}</td>
+              <td><span ng-repeat="amenity in object.shop.amenities">{{"-" + amenity}}</span></td>
             </tr>
           </tbody>
         </table>
@@ -61,12 +61,13 @@
     <h5>BOOK SERVICES</h5>
     <ul style="width:600px" ng-init="$last && atNgRepeatFinish()" ng-repeat="service in object.shop.services track by $index" class="container collapsible" data-collapsible="accordion">
       <li>
-        <div class="collapsible-header"><i class="material-icons">menu</i>{{service.name}}</div>
+        <div class="collapsible-header"><i class="material-icons">menu</i>{{serviceIdToService(service._id).name}}</div>
         <div class="collapsible-body">
           <form>
             <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
               <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
               <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
+              <br><span>{{subservice.discount}}% OFF</span>
             </p>
           </form>
         </div>
