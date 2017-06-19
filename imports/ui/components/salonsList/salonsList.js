@@ -7,6 +7,9 @@ import {
   Shops
 } from '../../../api/shops'
 import {
+  Locations
+} from '../../../api/locations'
+import {
   name as SalonDetails
 } from '../salonDetails/salonDetails'
 
@@ -23,14 +26,21 @@ class SalonsList {
       allShops() {
         return Shops.find({
           'location._id': $stateParams.locationId,
-          'services': {
-            $elemMatch: {
-              _id: $stateParams.serviceId
-            }
-          }
+          "services._id" : $stateParams.serviceId
+          // 'services': {
+          //   $elemMatch: {
+          //     _id: $stateParams.serviceId
+          //   }
+          // }
         })
       }
     });
+
+    $scope.locationIdToLocation = function(id) {
+      if(id) {
+        return Locations.findOne({'_id':id})
+      }
+    }
   }
 }
 
