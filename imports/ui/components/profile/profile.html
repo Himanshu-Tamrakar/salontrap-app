@@ -1,3 +1,12 @@
+<div class="navbar-fixed">
+  <nav ng-if="!profile.user._id">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="center">
+        <li class="center" style="margin-left:300px"><a>Please Login To Check Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 <div class="container">
   <div class="card transparent">
     <div class="row profileInfo">
@@ -37,27 +46,27 @@
           <i class="material-icons circle">email</i>
           <span class="title">Email</span>
           <p>{{profile.user.profile.email}}</p>
-          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+          <a href="#modal1" class="secondary-content"><i ng-if="profile.user._id" class="material-icons">mode_edit</i></a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle green">smartphone</i>
           <span class="title">Phone</span>
           <p>{{profile.user.profile.phoneNumber}}</p>
-          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+          <a href="#modal1" class="secondary-content"><i ng-if="profile.user._id" class="material-icons">mode_edit</i></a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle red">perm_contact_calendar</i>
           <span class="title">Date Of Birth</span>
           <p>NAN
           </p>
-          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+          <a href="#modal1" class="secondary-content"><i ng-if="profile.user._id" class="material-icons">mode_edit</i></a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle red">location_on</i>
           <span class="title">location</span>
           <p>NAN
           </p>
-          <a href="#modal1" class="secondary-content"><i class="material-icons">mode_edit</i></a>
+          <a href="#modal1" class="secondary-content"><i ng-if="profile.user._id" class="material-icons">mode_edit</i></a>
         </li>
       </ul>
     </div>
@@ -66,10 +75,13 @@
     <div id="test2" class="col s12">
       <ul class="collection with-header">
         <li ng-repeat="booking in profile.bookings" class="collection-item">
-          <b>ShopName :</b> <span>{{salonIdToSalonName(booking.salonId).name}}</span>
+          <b>Booking {{$index+1}} :</b> <span>{{booking._id}}</span><br>
+          <b>ShopName :</b> <span>{{salonToSalonId(booking.salonId).name}}</span><br>
+          <b>Mobile :</b> <span>{{salonToSalonId(booking.salonId).mobile}}</span><br>
+          <b>Email :</b> <span>{{salonToSalonId(booking.salonId).email}}</span><br>
           <span ng-if="booking.markAsComplete" class="right new badge" data-badge-caption="Completed">Booking</span>
           <br>
-          <b>Services Booked : </b><p ng-repeat="obj in booking.selectedItemsObject">{{obj.serviceName}}-{{obj.subServiceName}}</p>
+          <b>Services Booked : </b><span ng-repeat="obj in booking.selectedItemsObject"><br><b>{{serviceIdToService(obj.serviceId).name}}</b>-{{obj.subServiceName}}</span>
           <br>
           <b>Payable Amount :</b> <span>{{booking.price}}</span>
           <br>
@@ -79,7 +91,7 @@
           <div ng-if="!booking.markAsComplete" class="row center">
             <a ng-click="profile.cancelBooking(booking._id)" id="download-button" class="btn-large waves-effect waves-light orange">Cancel Booking</a>
           </div>
-        </a>
+          </a>
         </li>
       </ul>
     </div>
@@ -88,9 +100,9 @@
 </div>
 
 <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Edit Profile</h4>
-      <edit-profile></edit-profile>
-    </div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Edit Profile</h4>
+    <edit-profile></edit-profile>
   </div>
+</div>

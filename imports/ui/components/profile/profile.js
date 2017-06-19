@@ -11,7 +11,12 @@ import {
 import {
   Shops
 } from '../../../api/shops'
-import {name as EditProfile} from './editProfile/editProfile'
+import {
+  Services
+} from '../../../api/services'
+import {
+  name as EditProfile
+} from './editProfile/editProfile'
 
 class Profile {
   constructor($scope, $reactive, $timeout, $state, $rootScope) {
@@ -45,11 +50,18 @@ class Profile {
       }
     });
 
-    $scope.salonIdToSalonName = function(id) {
+    $scope.salonToSalonId = function(id) {
       return Shops.findOne({
         '_id': id
       })
     }
+    $scope.serviceIdToService = function(id) {
+      alert(id)
+      return Services.findOne({
+        '_id': id
+      })
+    }
+
   }
 
   cancelBooking(id) {

@@ -1,32 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="input-field col s12 m10 offset-m1">
-      <input id="name" disabled type="text" class="validate">
-      <label for="name">Name</label>
+      <input id="name" disabled type="text" ng-model="editProfile.userProfile.name" class="validate">
+      <!-- <label class="active" for="name">Name</label> -->
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m10 offset-m1">
-      <input id="mission" ng-model="editProfile.userProfile.email" type="text" class="validate" placeholder="Your Email">
-      <label for="mission">Email</label>
+      <input id="email" ng-model="editProfile.userProfile.email" type="text" class="validate" placeholder="Your Email">
+      <label for="email">Email</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m10 offset-m1">
-      <input id="mission" ng-model="editProfile.userProfile.phoneNumber" type="text" class="validate" placeholder="Your Mobile Number">
-      <label for="mission">Contact Number</label>
+      <input id="phone" ng-model="editProfile.userProfile.phoneNumber" type="text" class="validate" placeholder="Your Mobile Number">
+      <label for="phone">Contact Number</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m10 offset-m1">
-      <input ng-model="editProfile.userProfile.dob" type="text" class="datepicker">
-      <label for="mission">Date Of Birth</label>
+      <input id="date" ng-model="editProfile.userProfile.dob" type="text" class="datepicker">
+      <label for="date">Date Of Birth</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12 m10 offset-m1">
-      <input id="mission" ng-model="editProfile.userProfile.address" type="text" class="validate" placeholder="Your Address">
-      <label for="mission">Address</label>
+      <input id="address" ng-model="editProfile.userProfile.address" type="text" class="validate" placeholder="Your Address">
+      <label for="address">Address</label>
     </div>
   </div>
   <div class="row center">
