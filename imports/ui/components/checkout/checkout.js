@@ -96,7 +96,7 @@ class Checkout {
       'markAsComplete':false
     }
 
-    if (selectedDate) {
+    if (selectedDate && selectedTime) {
       Meteor.call('confirmBooking', object, function(error, result) {
         if (error) {
           console.log("booking not done");
@@ -110,9 +110,9 @@ class Checkout {
         }
       })
     } else if (!selectedDate) {
-      console.log("Please select Date");
+      Materialize.toast('Please Select Date', 5000)
     } else if (!selectedTime) {
-      console.log("Please select Time");
+      Materialize.toast('Please Select Time', 5000)
     }
   }
 }
