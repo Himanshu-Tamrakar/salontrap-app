@@ -56,7 +56,6 @@ class Profile {
       })
     }
     $scope.serviceIdToService = function(id) {
-      alert(id)
       return Services.findOne({
         '_id': id
       })

@@ -43,9 +43,9 @@ class Checkout {
         $('ul.tabs').tabs();
       });
 
-      $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
+      $('#datepicker').pickadate({
+        min:true,
+        max:15
       });
 
     }, 100);
@@ -91,9 +91,9 @@ class Checkout {
       'date': null,
       'bookingDate': selectedDate,
       'bookingTime': selectedTime,
-      'isCancel':false,
-      'cancelBy':null,
-      'markAsComplete':false
+      'isCancel': false,
+      'cancelBy': null,
+      'markAsComplete': false
     }
 
     if (selectedDate && selectedTime) {
