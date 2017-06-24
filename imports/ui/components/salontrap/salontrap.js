@@ -1,28 +1,17 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
-// import ngSanitize from 'angular-sanitize';
-import uiRouter from '@uirouter/angularjs';
 import template from './salontrap.html';
+import uiRouter from '@uirouter/angularjs';
 import {
     Meteor
 } from 'meteor/meteor';
-
 import {
   name as Navigation
 } from '../navigation/navigation';
 import {
   name as Home
 } from '../home/home';
-// import {
-//   name as SalonsList
-// } from '../salonsList/salonsList'
-// import {
-//   name as SalonDetails
-// } from '../salonDetails/salonDetails'
-// import {
-//   name as Checkout
-// } from '../checkout/checkout'
 import {
   name as Profile
 } from '../profile/profile'
@@ -58,12 +47,8 @@ export default angular.module(name, [
   ngMaterial,
   Navigation,
   Home,
-  // SalonsList,
-  // SalonDetails,
-  // Checkout,
   Profile,
   EditProfile
-  // ngSanitize
 ]).component(name, {
   template,
   controllerAs: name,

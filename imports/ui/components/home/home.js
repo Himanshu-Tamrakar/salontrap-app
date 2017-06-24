@@ -1,7 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import template from './home.html';
 import uiRouter from '@uirouter/angularjs';
+import webTemplate from './home.html';
+import mobileTemplate from './home.mobile.html';
 import ngMaterial from 'angular-material';
 import {
   Meteor
@@ -50,6 +51,24 @@ class Home {
       "heading3": "This is our big Tagline!",
       "hearding5": "Here's our small slogan."
     }]
+
+    $scope.howItsWork = [{
+      'image': 'search',
+      'content': 'Select Beauty Service'
+    }, {
+      'image': 'done_all',
+      'content': 'Choose Beauty Professional'
+    }, {
+      'image': 'access_time',
+      'content': 'Select Date And Time'
+    }, {
+      'image': 'settings',
+      'content': 'Book An Appointment And Relax'
+    }]
+
+    $scope.colorRow = function(index) {
+      $scope.row = index;
+    }
 
     $timeout(function() {
       //Slider initializer
@@ -105,6 +124,7 @@ class Home {
 
 
 const name = 'home';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 export default angular.module(name, [
   angularMeteor,

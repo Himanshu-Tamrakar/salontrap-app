@@ -2,7 +2,8 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import uiRouter from '@uirouter/angularjs';
-import template from './salonsList.html';
+import webTemplate from './salonsList.html';
+import mobileTemplate from './salonsList.mobile.html';
 import {
   Shops
 } from '../../../api/shops'
@@ -21,6 +22,18 @@ class SalonsList {
     this.scope = $scope;
     this.stateParams = $stateParams;
     this.timeout = $timeout;
+
+    $timeout(function () {
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+      $(document).ready(function() {
+        $('ul.tabs').tabs();
+      });
+    }, 10);
+
+    $scope.atNgRepeatFinish = function() {
+      $('.carousel.carousel-slider').carousel({fullWidth: true});
+    }
 
     this.helpers({
       allShops() {
@@ -45,6 +58,7 @@ class SalonsList {
 }
 
 const name = 'salonsList';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 export default angular.module(name, [
   angularMeteor,

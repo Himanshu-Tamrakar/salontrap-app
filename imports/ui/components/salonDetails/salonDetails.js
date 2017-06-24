@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import template from './salonDetails.html';
+import webTemplate from './salonDetails.html';
+import mobileTemplate from './salonDetails.mobile.html';
 import uiRouter from '@uirouter/angularjs';
 import ngMaterial from 'angular-material';
 import {
@@ -123,15 +124,21 @@ class SalonDetails {
     $scope = this.scope
     $state = this.state;
     $stateParams = this.stateParams
-    $state.go('checkout', {
-      'selectedItemsObject': $scope.selectedItems,
-      'salonId': $stateParams.salonId,
-      'serviceId': $stateParams.serviceId
-    })
+    if($scope.selectedItems.length > 0) {
+      $state.go('checkout', {
+        'selectedItemsObject': $scope.selectedItems,
+        'salonId': $stateParams.salonId,
+        'serviceId': $stateParams.serviceId
+      })
+    } else {
+      Materialize.toast('Select Some Items', 4000)
+    }
+
   }
 }
 
 const name = 'salonDetails';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 export default angular.module(name, [
   angularMeteor,

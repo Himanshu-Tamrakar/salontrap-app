@@ -1,0 +1,42 @@
+<div ng-repeat="shop in salonsList.allShops">
+  <div class="row card">
+    <div class="col s12 carousel carousel-slider">
+      <a ng-init="$last && atNgRepeatFinish()" ng-repeat="image in shop.images track by $index" class="carousel-item" href=""><img width="650px" height="200px" src="{{image}}"></a>
+    </div>
+    <h5 class="col s12">{{shop.name}}</h5>
+    <div class="col s12">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><span class="type">{{shop.type}}</span></td>
+          </tr>
+          <tr>
+            <td><span class="address">{{locationIdToLocation(shop.location._id).name}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="divider"></p>
+      <table>
+        <thead>
+          <tr>
+            <th>OPENING HOURS</th>
+            <th>PAYMENT MODE</th>
+            <th>PRICE</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{shop.openingHours}}</td>
+            <td><span ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}&emsp;</span></td>
+            <td>{{shop.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="divider"></p>
+      <div class="col s12">
+        <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" class="btn right">book Services</a>
+      </div>
+      <div style="height:30px" class="col s12"></div>
+    </div>
+  </div>

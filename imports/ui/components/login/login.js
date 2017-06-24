@@ -1,8 +1,10 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
-import template from './login.html';
+// import template from './login.html';
 import uiRouter from '@uirouter/angularjs';
+import webTemplate from './login.html';
+import mobileTemplate from './login.mobile.html';
 // import ngSanitize from 'angular-sanitize';
 import {
   Meteor
@@ -105,6 +107,8 @@ class Login {
       }, function(error) {
         if (!error) {
           $scope.chageValue(true, false, false);
+          $('#modal1').modal('close');
+          $('.modal1').modal('close');
           console.log("otp successfully verified");
         }
       })
@@ -115,6 +119,7 @@ class Login {
 }
 
 const name = 'login';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 export default angular.module(name, [
   angularMeteor,

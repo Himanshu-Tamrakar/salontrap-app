@@ -1,0 +1,56 @@
+<div ng-repeat="object in salonDetails.salonAllDetails">
+  <div class="carousel carousel-slider">
+    <a ng-init="$last && atNgRepeatFinishForCarosel()" ng-repeat="image in object.shop.images track by $index" class="carousel-item" href="#one!"><img height="300px" src="{{image}}"></a>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h5 class="">{{object.shop.name}}</h5>
+      <p>{{object.shop.type}}</p>
+      <p><span class="">{{locationIdToLocation(object.shop.location._id).name}}</span><span class=""></span>
+      </p>
+    </div>
+    <div class="col s12">
+      <table>
+        <thead>
+          <tr>
+            <th>OPENNING HOUR</th>
+            <th>PAYMENT MODE</th>
+            <th>PRICE</th>
+            <th>AMENITIES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{object.shop.openingHours}}</td>
+            <td>{{object.shop.paymentModes[0]}}</td>
+            <td>{{object.shop.price}}</td>
+            <td><span ng-repeat="amenity in object.shop.amenities">{{"-" + amenity}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col s12">
+      <h5 class="center">BOOK SERVICES</h5>
+      <ul ng-init="$last && atNgRepeatFinish()" ng-repeat="service in object.shop.services track by $index" class="container collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">menu</i>{{serviceIdToService(service._id).name}}</div>
+          <div class="collapsible-body">
+            <form>
+              <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
+                <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
+                <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
+                <br><span>{{subservice.discount}}% OFF</span>
+              </p>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col s12">
+      <a class="btn-large">Total Items- {{selectedItems.length}}</a>
+      <a ng-click="salonDetails.checkout()" class="btn-large">CheckOut</a>
+    </div>
+  </div>
+</div>

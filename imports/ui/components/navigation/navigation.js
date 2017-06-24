@@ -2,7 +2,12 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import uiRouter from '@uirouter/angularjs';
-import template from './navigation.html';
+import webTemplate from './navigation.html';
+import mobileTemplate from './navigation.mobile.html';
+import {
+    Meteor
+} from 'meteor/meteor';
+
 import {
   name as Login
 } from '../login/login'
@@ -39,6 +44,13 @@ class Navigation {
 
     $timeout(function() {
       $(".dropdown-button").dropdown();
+      $('.button-collapse').sideNav({
+        menuWidth: 250, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true, // Choose whether you can drag to open on touch screens,
+      })
+
     }, 10);
 
     this.helpers({
@@ -65,6 +77,7 @@ class Navigation {
 }
 
 const name = 'navigation';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 // Module
 export default angular.module(name, [

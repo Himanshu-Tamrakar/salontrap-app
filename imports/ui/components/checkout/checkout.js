@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import template from './checkout.html';
+import webTemplate from './checkout.html';
+import mobileTemplate from './checkout.mobile.html';
 import uiRouter from '@uirouter/angularjs';
 import {
   Meteor
@@ -118,6 +119,7 @@ class Checkout {
 }
 
 const name = 'checkout';
+const template = Meteor.Device.isPhone() ? mobileTemplate : webTemplate;
 
 export default angular.module(name, [
   angularMeteor,

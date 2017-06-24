@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Lato', sans-serif display: flex;
+  font-family: Source Sans Pro,sans-serif!important;
   flex-direction: column;
   overflow-x: hidden;
   min-height: 100vh;
@@ -11,7 +11,7 @@ main {
 }
 
 .slider_div {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .slider .indicators .indicator-item {
@@ -22,11 +22,12 @@ main {
 .slider .indicators .indicator-item.active {
   background-color: #ffffff;
 }
-
+/*
 .slider {
-  width: 80%;
+  width: 100%;
+  height: 70%;
   margin: 0 auto;
-}
+}*/
 
 .slider .indicators {
   bottom: 50px;
@@ -93,8 +94,13 @@ ul .tabs-swipe {
   background-image: linear-gradient(#5B7BD5, #4864B1);
 }
 
+/*//Change How It Works Color*/
+.teal{
+     background-color:teal;
+}
 
 /*Facebook Login Button End*/
+
 
 /*.card {
   background: #fff;
