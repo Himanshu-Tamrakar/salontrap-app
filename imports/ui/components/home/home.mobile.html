@@ -1,11 +1,11 @@
 <!-- FIRST ROW -->
 <div class="slider_div">
-  <div class="slider" style="width:100%;">
+  <div class="slider">
     <ul class="slides">
       <li ng-repeat="sliderObject in sliderContent">
-        <img src={{sliderObject.image}}>
+        <img style="height:200px" src={{sliderObject.image}}>
         <div class="caption center-align">
-          <h3>{{sliderObject.heading3}}</h3>
+          <h4>{{sliderObject.heading3}}</h4>
           <h5 class="light grey-text text-lighten-3">{{sliderObject.hearding5}}</h5>
         </div>
       </li>
@@ -22,12 +22,12 @@
   <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="active tab"><a href="#test1">Salon</a></li>
-        <li class="tab"><a class="" href="#test2">Home</a></li>
+        <li class="active tab"><a href="#salon-service">Salon</a></li>
+        <li class="tab"><a class="" href="#home-service">Home</a></li>
       </ul>
     </div>
-    <!-- //First Tab Contetnt -->
-    <div style="margin-top:10px;" id="test1" class="col s12">
+    <!-- //First Tab Content -->
+    <div style="margin-top:10px;" id="salon-service" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <select class="browser-default" ng-model="home.selected.salonService">
@@ -41,13 +41,14 @@
             <option ng-repeat="location in home.locations" value="{{location._id}}">{{location.name}}</option>
           </select>
         </div>
-        <div style="margin-top:18px;" class="input-field col">
-          <a ng-click="home.salonSubmit()" class="btn waves-effect waves-light">Submit</a>
+
+        <div class="center submit-container move-submit-down">
+          <input style="margin-top:20px;width:94%" ng-click="home.salonSubmit()" type="submit" name="commit" value="Submit" class="btn btn-save">
         </div>
       </div>
     </div>
-    <!-- //Second Tab Contetn -->
-    <div style="margin-top:10px;" id="test2" class="col s12">
+    <!-- //Second Tab Content -->
+    <div style="margin-top:10px;" id="home-service" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <select class="browser-default" ng-model="home.selected.homeService">
@@ -55,8 +56,8 @@
             <option ng-repeat="service in home.services" value="{{service._id}}">{{service.name}}</option>
           </select>
         </div>
-        <div style="margin-top:18px;" class="input-field col ">
-          <a ng-click="home.homeSubmit()" class="btn waves-effect waves-light">Submit</a>
+        <div class="center submit-container move-submit-down">
+          <input style="margin-top:20px;width:94%" ng-click="home.homeSubmit()" type="submit" name="commit" value="Submit" class="btn btn-save">
         </div>
       </div>
     </div>
@@ -69,7 +70,7 @@
       <h5>How saloonTrap Works</h5>
     </li>
     <div ng-repeat="object in howItsWork">
-      <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)"  style="cursor:pointer">
+      <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
         <div class="col s12 center">
           <i class="material-icons small">{{object.image}}</i>
           <li class="center"><span>{{object.content}}</span></li>

@@ -1,19 +1,19 @@
+<!-- //Side nav bar content -->
 <ul id="slide-out" class="side-nav fixed">
+
   <li>
     <div class="user-view">
       <div class="background">
         <img src="background-navbar.jpg" style="width: 260px; height: 160px">
+        <!-- <a ng-show="navigation.isUserLoggedIn"><img style="width:50px;height=50px;" class="circle" src="https://lh3.googleusercontent.com/-W2XryVdi-lA/U6tSAh3SsbI/AAAAAAAAFGY/ZHJiUEcR_Zs/w480-h480/avatar%2Bmaterial%2Bdesign.png"></a> -->
       </div>
-      <!-- <a href="#!user"><img class="circle" src="images/yuna.jpg"></a> -->
     </div>
   </li>
-  <!-- <li><div class="divider"></div></li>  -->
   <li><a href="/home" class="waves-effect">Home</a></li>
-  <li><a class="black-text darken-4" href="">About</a></li>
+  <li><a ui-sref="about" class="black-text darken-4" href="">About</a></li>
   <li ng-show="!navigation.isUserLoggedIn">
     <a class="black-text darken-4" href="#loginModel" ng-init="loginModelInitilize()">Login</a>
   </li>
-
   <li><a href="/profile">Profile</a></li>
   <li><div class="divider"></div></li>
   <li><a ng-click="navigation.logout()" href="">LogOut</a></li>
@@ -22,7 +22,11 @@
 <div class="navbar-fixed">
   <nav class="color white">
     <div class="nav-wrapper container">
-      <a href="/home" class="black-text darken-4 brand-logo">Logo</a>
+      <!-- //Logo -->
+      <div class="center-align center">
+          <a href="/home" class="brand-logo" ><img id="header-logo" class="responsive-img" src="/logo.png" style="margin-top:10px;height: 35%; width: 35%"></a>
+      </div>
+      <!-- //Side Nav bar -->
       <a href="" data-activates="slide-out" class="button-collapse show-on-large"><i class="red-text text-darken-4 material-icons">menu</i></a>
     </div>
   </nav>
@@ -31,5 +35,6 @@
 <div id="loginModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-content" style="width:100%;height:100%">
     <login></login>
+    <button class="modal-close btn-flat" style="position: absolute; top:0; right:0;"><i class="material-icons" style="color: #898F9C">close</i></button>
   </div>
 </div>

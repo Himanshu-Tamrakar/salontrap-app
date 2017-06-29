@@ -1,42 +1,31 @@
 <div ng-repeat="shop in salonsList.allShops">
   <div class="row card">
-    <div class="col s12 carousel carousel-slider">
+    <!-- <div class="col s12 carousel carousel-slider">
       <a ng-init="$last && atNgRepeatFinish()" ng-repeat="image in shop.images track by $index" class="carousel-item" href=""><img width="650px" height="200px" src="{{image}}"></a>
-    </div>
-    <h5 class="col s12">{{shop.name}}</h5>
+    </div> -->
     <div class="col s12">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><span class="type">{{shop.type}}</span></td>
-          </tr>
-          <tr>
-            <td><span class="address">{{locationIdToLocation(shop.location._id).name}}</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="divider"></p>
-      <table>
-        <thead>
-          <tr>
-            <th>OPENING HOURS</th>
-            <th>PAYMENT MODE</th>
-            <th>PRICE</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>{{shop.openingHours}}</td>
-            <td><span ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}&emsp;</span></td>
-            <td>{{shop.price}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="divider"></p>
-      <div class="col s12">
-        <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" class="btn right">book Services</a>
-      </div>
-      <div style="height:30px" class="col s12"></div>
+      <a><img height="150px" src="{{shop.images[0]}}"></a>
     </div>
+    <h6 class="col s12"><b>{{shop.name}}</b></h6>
+    <span class="col s12">{{shop.type}}</span>
+    <span class="col s12">{{locationIdToLocation(shop.location._id).name}}</span>
+    <div class="col s12">
+      <p class="divider"></p>
+    </div>
+    <span class="col s5"><b>OPENING HOURS</b></span>
+    <span class="col s4"><b>PAYMENT MODE</b></span>
+    <span class="col s3"><b>PRICE</b></span>
+    <span class="col s5">{{shop.openingHours}}</span>
+    <span class="col s2" ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}</span>
+
+    <span class="col right" style="margin-right:45px">
+      <i ng-if="shop.price>0" class="fa fa-rupee black-text"></i>
+      <i ng-if="shop.price>1" class="fa fa-rupee black-text"></i>
+      <i ng-if="shop.price>2" class="fa fa-rupee black-text"></i>
+      <i ng-if="shop.price>3" class="fa fa-rupee black-text"></i>
+    </span>
+    <div style="margin-top:15px" class="col s12">
+      <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" class="btn right">book Services</a>
+    </div>
+    <div style="height:15px" class="col s12"></div>
   </div>

@@ -71,8 +71,10 @@ class Login {
       } else {
         if (!Meteor.user().profile.verify) {
           $scope.chageValue(false, true, false);
+        } else {
+          $('.modal').modal('close');
         }
-        console.log("logged in successfully");
+        Materialize.toast('Wecome! You are successfully loggedin', 4000);
       }
     })
   }
@@ -85,9 +87,9 @@ class Login {
     if (checkPhoneNumber(phoneNumber)) {
       Meteor.call('sendOtp', phoneNumber, function(error, result) {
         if (error) {
-          console.log('%cUnable to send SMS @ hiyo.js:Hiyo:sendLink()', 'color: red');
+          Materialize.toast('Sending Opt Unsuccessfull', 4000);
         } else {
-          console.log("SMS send successfully");
+          Materialize.toast('Opt Sent successfully', 4000);
           if (result) {
             $scope.chageValue(false, false, true);
           }
@@ -106,14 +108,12 @@ class Login {
         }
       }, function(error) {
         if (!error) {
-          $scope.chageValue(true, false, false);
-          $('#modal1').modal('close');
-          $('.modal1').modal('close');
-          console.log("otp successfully verified");
+          $('.modal').modal('close');
+          Materialize.toast('Mobile Verified Successfull', 4000);
         }
       })
     } else {
-      console.log("not match");
+      Materialize.toast("OPT didn't match", 4000);
     }
   }
 }

@@ -1,23 +1,17 @@
 <div class="container">
   <div class="col" ng-repeat="shop in salonsList.allShops">
-    <h4 class="header">These are all salon of your choice</h4>
+    <h5 class="header">Salons of your choice</h5>
     <div class="card horizontal">
       <div style="width:30%" class="card-image">
-        <img style="width:300px;height:320px" src="http://lorempixel.com/100/190/nature/6">
+        <img style="width:300px;height:320px" src="{{shop.images[0]}}">
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p>{{shop.name}}</p>
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><span class="type">{{shop.type}}</span></td>
-              </tr>
-              <tr>
-                <td><span class="address">{{locationIdToLocation(shop.location._id).name}}</span></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="row">
+          <h6 class="col s12"><b>{{shop.name}}</b></h6>
+          <span class="col s12">{{shop.type}}</span>
+          <span class="col s12">{{locationIdToLocation(shop.location._id).name}}</span>
+        </div>
           <p class="divider"></p>
           <table>
             <thead>
@@ -32,15 +26,19 @@
               <tr>
                 <td>{{shop.openingHours}}</td>
                 <td><span ng-repeat="paymentMode in shop.paymentModes">{{paymentMode}}&emsp;</span></td>
-                <td>{{shop.price}}</td>
+                <td>
+                  <span>
+                    <i ng-if="shop.price>0" class="fa fa-rupee black-text"></i>
+                    <i ng-if="shop.price>1" class="fa fa-rupee black-text"></i>
+                    <i ng-if="shop.price>2" class="fa fa-rupee black-text"></i>
+                    <i ng-if="shop.price>3" class="fa fa-rupee black-text"></i>
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <!-- <div class="row card-action"> -->
-          <!-- <p class="col green-text">Book to get upto 15% <br>cashback<br><span class="grey-text text-lighten-1">On All services</span></p> -->
           <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" id="download-button" class="col right btn waves-effect waves-light">book Services</a>
-        <!-- </div> -->
       </div>
     </div>
   </div>

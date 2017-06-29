@@ -1,6 +1,6 @@
 <!-- FIRST ROW -->
 <div class="slider_div">
-  <div class="slider" style="width:80%;margin: 0 auto;"> 
+  <div class="slider" style="width:80%;margin: 0 auto;">
     <ul class="slides">
       <li ng-repeat="sliderObject in sliderContent">
         <img src={{sliderObject.image}}>
@@ -21,12 +21,12 @@
         <div class="row">
           <div class="col s8">
             <ul class="tabs">
-              <li class="active tab col s2"><a href="#test1">Salon</a></li>
-              <li class="tab col s2"><a class="" href="#test2">Home</a></li>
+              <li class="active tab col s2"><a href="#salon-service">Salon</a></li>
+              <li class="tab col s2"><a class="" href="#home-service">Home</a></li>
             </ul>
           </div>
           <div>
-            <div style="margin-top:10px;" id="test1" class="col s12">
+            <div style="margin-top:10px;" id="salon-service" class="col s12">
               <div class="row">
                 <div class="input-field col s4">
                   <select class="browser-default" ng-model="home.selected.salonService">
@@ -45,7 +45,7 @@
                 </div>
               </div>
             </div>
-            <div style="margin-top:10px;" id="test2" class="col s12">
+            <div style="margin-top:10px;" id="home-service" class="col s12">
               <div class="row">
                 <div class="input-field col s4">
                   <select class="browser-default" ng-model="home.selected.homeService">
@@ -66,50 +66,20 @@
   <!-- //Second End -->
 
   <!-- //Third -->
-  <div class="hr-title">
-    <h4>How SalonTrap works</h4>
-  </div>
-  <ul id="tabs-swipe" class="tabs">
-    <li class="tab col s3"><a href="#swipe-1">Select Beauty</a></li>
-    <li class="tab col s3"><a href="#swipe-2">Select Professional</a></li>
-    <li class="tab col s3"><a href="#swipe-3">Select Time And Time</a></li>
-    <li class="tab col s3"><a href="#swipe-4">Book An Appointment</a></li>
-  </ul>
-  <div style="width:100%" id="swipe-1" class="row">
-    <div class="">
-      <img class="col" src="http://lorempixel.com/580/250/nature/3" width="50%" alt="image">
-    </div>
-    <div class="">
-      <h5>Select Beauty Service from Menu </h5>
-      <p>Choose from our wide range of services - Facial, Bleach, Haircut, Manicure, Pedicure, Massage ,Waxing ,Make-Over, Spa, Threading </p>
-    </div>
-  </div>
-  <div style="width:100%" id="swipe-2" class="row">
-    <div>
-      <img class="col" src="http://lorempixel.com/580/250/nature/3" width="50%" alt="image">
-    </div>
-    <div class="">
-      <h5>Choose Beauty Professional </h5>
-      <p>Select the beautician based on experience, specialization, customer reviews or price </p>
-    </div>
-  </div>
-  <div style="width:100%" id="swipe-3" class="row">
-    <div class="">
-      <img class="col" src="http://lorempixel.com/580/250/nature/3" width="50%" alt="image">
-    </div>
-    <div class="">
-      <h5>Select Time and Location </h5>
-      <p>Select the date and time slot at which you would like the beautician to turn up at your doorstep </p>
-    </div>
-  </div>
-  <div style="width:100%" id="swipe-4" class="row">
-    <div class="">
-      <img class="col" src="http://lorempixel.com/580/250/nature/3" width="50%" alt="image">
-    </div>
-    <div class="">
-      <h5>Book An Appointment and Relax </h5>
-      <p>Book Your Appointment and enjoy hassle-free salon services at home.</p>
-    </div>
+  <div class="card">
+    <ul class="collection">
+      <li class="collection-header center">
+        <h5>How saloonTrap Works</h5>
+      </li>
+      <div ng-repeat="object in howItsWork">
+        <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
+          <div class="col s12 center">
+            <i class="material-icons small">{{object.image}}</i>
+            <li class="center"><span>{{object.content}}</span></li>
+          </div>
+        </div>
+      </div>
+    </ul>
   </div>
   <!-- //Third Ends-->
 </div>

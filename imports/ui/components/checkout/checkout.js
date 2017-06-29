@@ -56,12 +56,8 @@ class Checkout {
         return $stateParams.selectedItemsObject;
       },
       canBook() {
-        if ($stateParams.selectedItemsObject && $stateParams.salonId && $stateParams.serviceId) {
-          if (Meteor.userId() && $stateParams.selectedItemsObject.length > 0) {
-            return true;
-          } else {
-            return false;
-          }
+        if (Meteor.userId()) {
+          return true;
         } else {
           return false;
         }
@@ -97,16 +93,19 @@ class Checkout {
       'markAsComplete': false
     }
 
-    if (selectedDate && selectedTime) {
+    if(!$stateParams.selectedItemsObject) {
+      Materialize.toast('Please Select Some Services', 5000)
+      return;
+    }
+
+    if (selectedDate && selectedTime && $stateParams.selectedItemsObject.length > 0) {
       Meteor.call('confirmBooking', object, function(error, result) {
         if (error) {
-          console.log("booking not done");
+          Materialize.toast('Booking Not Confired', 5000)
         } else {
           if (result) {
-            console.log("bookings done");
+            Materialize.toast('Booking Done!', 5000)
             $state.go('home')
-          } else {
-            console.log("Insersion error");
           }
         }
       })
@@ -114,6 +113,8 @@ class Checkout {
       Materialize.toast('Please Select Date', 5000)
     } else if (!selectedTime) {
       Materialize.toast('Please Select Time', 5000)
+    } else if($stateParams.selectedItemsObject.length === 0) {
+      Materialize.toast('Please Select Some Services', 5000)
     }
   }
 }

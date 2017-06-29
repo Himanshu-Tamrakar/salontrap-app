@@ -14,6 +14,10 @@ import {
 import {
   name as Profile
 } from '../profile/profile'
+import {
+  name as About
+} from '../about/about'
+// import {name as EditProfile} from '../profile/editProfile/editProfile';
 
 class Navigation {
   constructor($scope, $reactive, $state, $timeout) {
@@ -33,11 +37,8 @@ class Navigation {
         startingTop: '4%', // Starting top style attribute
         endingTop: '10%', // Ending top style attribute
         ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-          // alert("Ready");
-          // console.log(modal, trigger);
         },
         complete: function() {
-            // alert('Closed');
           } // Callback for Modal close
       });
     };
@@ -51,7 +52,7 @@ class Navigation {
         draggable: true, // Choose whether you can drag to open on touch screens,
       })
 
-    }, 10);
+    }, 100);
 
     this.helpers({
       isUserLoggedIn() {
@@ -64,12 +65,13 @@ class Navigation {
       }
     })
   }
+
   logout() {
     Meteor.logout(function(error) {
       if (error) {
-        console.log("Not loggedout");
+        Materialize.toast('Logout fail', 5000);
       } else {
-        console.log("looged out successfully");
+        Materialize.toast('We will miss you',5000);
       }
     })
 
@@ -85,7 +87,9 @@ export default angular.module(name, [
   Login,
   ngMaterial,
   uiRouter,
-  Profile
+  Profile,
+  About
+  // EditProfile
 ]).component(name, {
   template,
   controllerAs: name,

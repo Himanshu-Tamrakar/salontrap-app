@@ -72,9 +72,16 @@ class Home {
 
     $timeout(function() {
       //Slider initializer
-      $(document).ready(function() {
-        $('.slider').slider();
-      });
+      if(Meteor.Device.isPhone()) {
+        $(document).ready(function() {
+          $('.slider').slider({'height':200});
+        });
+      } else {
+        $(document).ready(function() {
+          $('.slider').slider({});
+        });
+      }
+
       // Tab initializer
       $(document).ready(function() {
         $('ul.tabs').tabs();
@@ -109,10 +116,8 @@ class Home {
       $state.go('salons', object)
     } else if (this.selected.salonService == null) {
       Materialize.toast('Pease Select The Service', 5000);
-      console.log("serviceId Not avail");
     } else if (this.selected.salonLocation == null) {
       Materialize.toast('Pease Select The Location', 5000);
-      console.log("locationId Not avail");
     }
   }
 

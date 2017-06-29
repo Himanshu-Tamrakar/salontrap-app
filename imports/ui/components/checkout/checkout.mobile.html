@@ -2,7 +2,7 @@
   <nav ng-if="!checkout.canBook">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="center">
-        <li><a>Please Login OR Select The services</a></li>
+        <li><a>Your are not looged in! Pease Login</a></li>
       </ul>
     </div>
   </nav>
@@ -73,7 +73,7 @@
       </table>
     </div>
     <div ng-show="checkout.canBook" class="card-action center fixed">
-      <a ng-click="checkout.confirmBooking()" style="margin-right:10p" class="center btn-large orange">Confirm Booking</a>
+      <a ng-click="checkout.confirmBooking()" style="margin-right:10p" class="center btn-large">Confirm Booking</a>
     </div>
   </div>
 </div>

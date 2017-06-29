@@ -5,7 +5,11 @@
       <!-- //Row First Column -->
       <div class="col s7">
         <div class="card-image">
-          <img style="margin-top:10px;height:400px;width:900px" src={{object.shop.images[1]}} alt="" class="responsive-img" />
+          <div class="carousel carousel-slider center" data-indicators="true">
+            <div ng-init="$last && atNgRepeatFinishForCarosel()" ng-repeat="image in object.shop.images track by $index" class="carousel-item" href="#one!">
+              <img height="300px" src="{{image}}">
+            </div>
+          </div>
         </div>
         <div class="card-stacked">
           <div class="card-action">
@@ -31,8 +35,14 @@
             <tr>
               <td>{{object.shop.openingHours}}</td>
               <td>{{object.shop.paymentModes[0]}}</td>
-              <td>{{object.shop.price}}</td>
-              <td><span ng-repeat="amenity in object.shop.amenities">{{"-" + amenity}}</span></td>
+              <td>
+                <span>
+                <i ng-if="object.shop.price>0" class="fa fa-rupee black-text"></i>
+                <i ng-if="object.shop.price>1" class="fa fa-rupee black-text"></i>
+                <i ng-if="object.shop.price>2" class="fa fa-rupee black-text"></i>
+                <i ng-if="object.shop.price>3" class="fa fa-rupee black-text"></i>
+              </td>
+              <td><span ng-repeat="amenity in object.shop.amenities">{{amenity}} </span></td>
             </tr>
           </tbody>
         </table>
@@ -73,13 +83,5 @@
         </div>
       </li>
     </ul>
-    <!-- //Thrid Row -->
-    <h5>More Photos</h5>
-
-    <div style="margin-left:10px; width:600px;height:600px;" class="carousel carousel-slider">
-      <a ng-init="$last && atNgRepeatFinishForCarosel()" ng-repeat="image in object.shop.images" class="carousel-item" href=""><img src="{{image}}"></a>
-    </div>
-
-
   </div>
 </div>

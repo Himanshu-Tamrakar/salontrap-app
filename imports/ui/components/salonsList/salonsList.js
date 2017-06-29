@@ -25,26 +25,18 @@ class SalonsList {
 
     $timeout(function () {
       $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-      $(document).ready(function() {
-        $('ul.tabs').tabs();
-      });
     }, 10);
 
     $scope.atNgRepeatFinish = function() {
       $('.carousel.carousel-slider').carousel({fullWidth: true});
     }
 
+
     this.helpers({
       allShops() {
         return Shops.find({
           'location._id': $stateParams.locationId,
           "services._id" : $stateParams.serviceId
-          // 'services': {
-          //   $elemMatch: {
-          //     _id: $stateParams.serviceId
-          //   }
-          // }
         })
       }
     });
@@ -68,10 +60,6 @@ export default angular.module(name, [
 ]).component(name, {
   template,
   controllerAs: name,
-  // params: {
-  //   serviceId: null,
-  //   locationId: null
-  // },
   controller: SalonsList,
 
 }).config(config);

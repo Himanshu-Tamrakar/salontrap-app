@@ -42,12 +42,6 @@ class SalonDetails {
       $scope.selectedItems = []
       $("input:checkbox[name='subservice']:checked").each(function() {
         const item = JSON.parse($(this).val());
-        // const object = {
-        //   'service': $(this).attr("data-valuetwo"),
-        //   'subservice': item.name,
-        //   'price': item.price,
-        //   'discount': item.discount
-        // }
         $scope.selectedItems.push(item)
       })
     }
@@ -75,9 +69,6 @@ class SalonDetails {
       $(document).ready(function() {
         $('.collapsible').collapsible();
       });
-      // $(document).ready(function() {
-      //   $('.carousel').carousel();
-      // });
     }
 
     $scope.atNgRepeatFinishForCarosel = function() {
@@ -131,7 +122,7 @@ class SalonDetails {
         'serviceId': $stateParams.serviceId
       })
     } else {
-      Materialize.toast('Select Some Items', 4000)
+      Materialize.toast('Select Atleast One Service', 4000)
     }
 
   }

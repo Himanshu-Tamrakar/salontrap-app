@@ -13,9 +13,11 @@ import {
   name as Home
 } from '../home/home';
 import {
-  name as Profile
-} from '../profile/profile'
-import {name as EditProfile} from '../profile/editProfile/editProfile';
+  name as Privacy
+} from '../privacy/privacy'
+import {
+  name as About
+} from '../about/about'
 /*
 <HOME TO SALONS>
 1. Things To Change in Future
@@ -47,8 +49,8 @@ export default angular.module(name, [
   ngMaterial,
   Navigation,
   Home,
-  Profile,
-  EditProfile
+  Privacy,
+  About
 ]).component(name, {
   template,
   controllerAs: name,
