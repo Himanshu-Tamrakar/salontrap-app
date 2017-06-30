@@ -19,7 +19,7 @@ main {
 }
 
 .slider_div {
-  margin-top: 15px;
+  /*margin-top: 5px;*/
 }
 
 .slider .indicators .indicator-item.active {

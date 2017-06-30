@@ -17,7 +17,9 @@ import {
 import {
   name as About
 } from '../about/about'
-// import {name as EditProfile} from '../profile/editProfile/editProfile';
+import {
+  name as Home
+} from '../home/home'
 
 class Navigation {
   constructor($scope, $reactive, $state, $timeout) {
@@ -45,6 +47,7 @@ class Navigation {
 
     $timeout(function() {
       $(".dropdown-button").dropdown();
+
       $('.button-collapse').sideNav({
         menuWidth: 250, // Default is 300
         edge: 'left', // Choose the horizontal origin
@@ -88,8 +91,8 @@ export default angular.module(name, [
   ngMaterial,
   uiRouter,
   Profile,
-  About
-  // EditProfile
+  About,
+  Home
 ]).component(name, {
   template,
   controllerAs: name,

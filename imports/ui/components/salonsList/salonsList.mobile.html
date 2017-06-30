@@ -1,12 +1,9 @@
 <div ng-repeat="shop in salonsList.allShops">
   <div class="row card">
-    <!-- <div class="col s12 carousel carousel-slider">
-      <a ng-init="$last && atNgRepeatFinish()" ng-repeat="image in shop.images track by $index" class="carousel-item" href=""><img width="650px" height="200px" src="{{image}}"></a>
-    </div> -->
     <div class="col s12">
-      <a><img height="150px" src="{{shop.images[0]}}"></a>
+      <a><img style="height:150px" src="{{shop.images[0]}}"></a>
     </div>
-    <h6 class="col s12"><b>{{shop.name}}</b></h6>
+    <h5 class="col s12"><b>{{shop.name}}</b></h5>
     <span class="col s12">{{shop.type}}</span>
     <span class="col s12">{{locationIdToLocation(shop.location._id).name}}</span>
     <div class="col s12">
@@ -25,7 +22,7 @@
       <i ng-if="shop.price>3" class="fa fa-rupee black-text"></i>
     </span>
     <div style="margin-top:15px" class="col s12">
-      <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" class="btn right">book Services</a>
+      <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" class="btn-large right">book Services</a>
     </div>
     <div style="height:15px" class="col s12"></div>
   </div>

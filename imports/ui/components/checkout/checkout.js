@@ -23,7 +23,11 @@ class Checkout {
 
     this.stateParams = $stateParams;
 
+    $scope.first = true;
+    $scope.second = false;
     $scope.totalPay = 0;
+    this.phoneNumber = "";
+    this.otp = "";
 
     this.selectedDate = null;
     // this.selectedTime = null;
@@ -31,6 +35,27 @@ class Checkout {
     $scope.finalPrice = function(price, discount) {
       return price - ((price * discount) / 100);
     }
+
+    $scope.chageValue = function(first, second) {
+      $timeout(function() {
+        $scope.first = first;
+        $scope.second = second;
+      }, 30);
+    }
+
+    $scope.mobileVerifyModelInitilize = function() {
+      $('.modal').modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        },
+        complete: function() {} // Callback for Modal close
+      });
+    };
 
     $timeout(function() {
       const Items = $stateParams.selectedItemsObject
@@ -45,9 +70,11 @@ class Checkout {
       });
 
       $('#datepicker').pickadate({
-        min:true,
-        max:15
+        min: true,
+        max: 15
       });
+
+
 
     }, 100);
 
@@ -73,6 +100,7 @@ class Checkout {
     $state = this.state;
 
     const userId = Meteor.userId()
+    const user = Meteor.users.findOne(userId)
     const salonId = $stateParams.salonId;
     const serviceId = $stateParams.serviceId;
     const selectedItemsObject = $stateParams.selectedItemsObject;
@@ -93,12 +121,12 @@ class Checkout {
       'markAsComplete': false
     }
 
-    if(!$stateParams.selectedItemsObject) {
+    if (!$stateParams.selectedItemsObject) {
       Materialize.toast('Please Select Some Services', 5000)
       return;
     }
 
-    if (selectedDate && selectedTime && $stateParams.selectedItemsObject.length > 0) {
+    if (selectedDate && selectedTime && $stateParams.selectedItemsObject.length > 0 && user.profile.verify) {
       Meteor.call('confirmBooking', object, function(error, result) {
         if (error) {
           Materialize.toast('Booking Not Confired', 5000)
@@ -113,10 +141,61 @@ class Checkout {
       Materialize.toast('Please Select Date', 5000)
     } else if (!selectedTime) {
       Materialize.toast('Please Select Time', 5000)
-    } else if($stateParams.selectedItemsObject.length === 0) {
+    } else if ($stateParams.selectedItemsObject.length === 0) {
       Materialize.toast('Please Select Some Services', 5000)
+    } else if (!user.profile.verify) {
+      $('#mobile-verify-modal').modal('open');
     }
   }
+
+  checkPhoneNumber = function(phoneNumber) {
+    var regex = /^\d{10}$/;
+    if (phoneNumber.match(regex)) {
+      return true;
+    } else {
+      Materialize.toast('Please enter valid mobile number', 4000);
+      return false;
+    }
+  }
+
+  sendOtp() {
+    phoneNumber = this.phoneNumber;
+    checkPhoneNumber = this.checkPhoneNumber;
+    $scope = this.scope;
+
+    if (checkPhoneNumber(phoneNumber)) {
+      Meteor.call('sendOtp', phoneNumber, function(error, result) {
+        if (error) {
+          Materialize.toast('Sending Opt Unsuccessfull', 4000);
+        } else {
+          Materialize.toast('Opt Sent successfully', 4000);
+          if (result) {
+            $scope.chageValue(false, true);
+          }
+        }
+      });
+    }
+  }
+
+  verifyOpt() {
+    if (parseInt(Meteor.user().profile.otp.toString()) == parseInt(this.otp)) {
+      Meteor.users.update({
+        '_id': Meteor.userId()
+      }, {
+        $set: {
+          'profile.verify': true
+        }
+      }, function(error) {
+        if (!error) {
+          $('.modal').modal('close');
+          Materialize.toast('Mobile Verified Successfull', 4000);
+        }
+      })
+    } else {
+      Materialize.toast("OPT didn't match", 4000);
+    }
+  }
+
 }
 
 const name = 'checkout';

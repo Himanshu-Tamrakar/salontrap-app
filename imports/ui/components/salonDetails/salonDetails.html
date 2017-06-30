@@ -1,4 +1,4 @@
-<div style="margin-top:50px">
+<div style="margin-top:10px">
   <div style="margin-left:50px;" ng-repeat="object in salonDetails.salonAllDetails" ng-init="$last && atNgRepeatFinish()">
     <!-- //ROW -->
     <div class="row">
@@ -17,7 +17,6 @@
               <h5 class="">{{object.shop.name}}</h5>
               <p>{{object.shop.type}}</p>
               <p><span class="">{{locationIdToLocation(object.shop.location._id).name}}</span><span class=""></span>
-                <!-- <span class="">1.1 km Away</span>? -->
               </p>
             </div>
           </div>
@@ -62,7 +61,7 @@
           </ul>
         </div>
         <div class="card-action center fixed">
-          <a ng-click="salonDetails.checkout()" style="margin-right:10p" class="center btn-large orange">CheckOut</a>
+          <a ng-click="salonDetails.checkout()" style="margin-right:10p" class="center btn-large">CheckOut</a>
         </div>
       </div>
       <!-- //Second Column End -->
