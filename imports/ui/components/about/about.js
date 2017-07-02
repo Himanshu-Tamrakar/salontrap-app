@@ -9,7 +9,7 @@ class About {
     'ngInject';
 
     $reactive(this).attach($scope);
-
+    window.scrollTo(0, 0);
     this.scope = $scope;
     this.timeout = $timeout;
     this.state = $state;
