@@ -25,6 +25,8 @@ class SalonDetails {
     'ngInject';
 
     $reactive(this).attach($scope);
+    window.scrollTo(0, 0);
+
     this.stateParams = $stateParams;
     this.scope = $scope;
     this.timeout = $timeout;

@@ -18,19 +18,9 @@ import {
 import {
   name as About
 } from '../about/about'
-/*
-<HOME TO SALONS>
-1. Things To Change in Future
-Use
-ui-sref="salons({ serviceId: 's', locationId: 's'})"
-at home Submib
 
-2. Make Auto complete instead of select in Home
-
-3. make url /salons by adding params in .component
-*/
 class SalonTrap {
-  constructor($scope, $reactive, $rootScope, $timeout, $state, $interval) {
+  constructor($scope, $reactive, $rootScope, $state, $timeout) {
 
     'ngInject';
     $reactive(this).attach($scope);

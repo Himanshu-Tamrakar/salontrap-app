@@ -2,7 +2,7 @@
   <div style="margin-left:50px;" ng-repeat="object in salonDetails.salonAllDetails" ng-init="$last && atNgRepeatFinish()">
     <!-- //ROW -->
     <div class="row">
-      <!-- //Row First Column -->
+      <!-- //Row First Column-->
       <div class="col s7">
         <div class="card-image">
           <div class="carousel carousel-slider center" data-indicators="true">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <table>
+        <table ng-show="object.shop.price && object.shop.openingHours && object.shop.paymentModes.length > 0">
           <thead>
             <tr>
               <th>OPENNING HOUR</th>
@@ -33,7 +33,7 @@
           <tbody>
             <tr>
               <td>{{object.shop.openingHours}}</td>
-              <td>{{object.shop.paymentModes[0]}}</td>
+              <td><span ng-repeat="payment in object.shop.paymentModes">{{payment}} </span></td>
               <td>
                 <span>
                 <i ng-if="object.shop.price>0" class="fa fa-rupee black-text"></i>
@@ -75,8 +75,9 @@
           <form>
             <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
               <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
-              <label for="{{subservice}}" style="line-height: 20px">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
-              <br><span>{{subservice.discount}}% OFF</span>
+              <label class="black-text" for="{{subservice}}">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
+              <br>
+              <span class="grey-text">{{subservice.discount}}% OFF</span>
             </p>
           </form>
         </div>

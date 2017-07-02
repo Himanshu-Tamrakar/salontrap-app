@@ -1,11 +1,9 @@
-<!-- //Side nav bar content -->
+<!--Side nav bar content -->
 <ul id="slide-out" class="side-nav fixed">
-
   <li>
     <div class="user-view">
       <div class="background">
         <img src="background-navbar.jpg" style="width: 260px; height: 160px">
-        <!-- <a ng-show="navigation.isUserLoggedIn"><img style="width:50px;height=50px;" class="circle" src="https://lh3.googleusercontent.com/-W2XryVdi-lA/U6tSAh3SsbI/AAAAAAAAFGY/ZHJiUEcR_Zs/w480-h480/avatar%2Bmaterial%2Bdesign.png"></a> -->
       </div>
     </div>
   </li>
@@ -14,7 +12,7 @@
   <li ng-show="!navigation.isUserLoggedIn">
     <a class="black-text darken-4" href="#loginModel" ng-init="loginModelInitilize()">Login</a>
   </li>
-  <li><a href="/profile">Profile</a></li>
+  <li ng-show="navigation.isUserLoggedIn"><a href="/profile">Profile</a></li>
   <li><div class="divider"></div></li>
   <li><a ng-click="navigation.logout()" href="">LogOut</a></li>
 </ul>
@@ -22,12 +20,12 @@
 <div class="navbar-fixed">
   <nav class="white">
     <div class="nav-wrapper container">
-      <!-- //Logo -->
+      <!--Logo -->
       <div class="center-align center">
           <a href="/home" class="brand-logo" ><img id="header-logo" class="responsive-img" src="/logo.png" style="margin-top:10px;height: 55%; width: 35%"></a>
       </div>
-      <!-- //Side Nav bar -->
-      <a href="" data-activates="slide-out" class="button-collapse show-on-large"><i class="red-text text-darken-4 material-icons">menu</i></a>
+      <!--Side Nav bar -->
+      <a data-activates="slide-out" class="button-collapse show-on-large"><i class="red-text text-darken-4 material-icons">menu</i></a>
     </div>
   </nav>
 </div>

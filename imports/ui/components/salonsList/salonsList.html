@@ -1,17 +1,23 @@
 <div class="container">
-  <div class="col" ng-repeat="shop in salonsList.allShops">
-    <h5 class="header">Salons of your choice</h5>
-    <div class="card horizontal">
-      <div style="width:30%" class="card-image">
-        <img style="width:300px;height:320px" src="{{shop.images[0]}}">
+  <div class="sale-tagline">
+    <h5 style="font-size: 1.855rem;margin: 1.46rem 0 1.168rem" class="orange-text line-1">Salons Of Your Choice</h5>
+  </div>
+
+  <div ng-repeat="shop in salonsList.allShops">
+    <div class="card horizontal" style="width:700px">
+
+      <div style="width:40%" class="card-image">
+        <img style="height:265px" src="{{shop.images[0]}}">
+        <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})"  style="width:100%" class="btn white grey-text"><b>Discount Available</b></a>
       </div>
+
       <div class="card-stacked">
         <div class="card-content">
           <div class="row">
-          <h6 class="col s12"><b>{{shop.name}}</b></h6>
-          <span class="col s12">{{shop.type}}</span>
-          <span class="col s12">{{locationIdToLocation(shop.location._id).name}}</span>
-        </div>
+            <h6 class="col s12"><b>{{shop.name}}</b></h6>
+            <span class="col s12">{{shop.type}}</span>
+            <span class="col s12">{{locationIdToLocation(shop.location._id).name}}</span>
+          </div>
           <p class="divider"></p>
           <table>
             <thead>
@@ -21,7 +27,6 @@
                 <th>PRICE</th>
               </tr>
             </thead>
-
             <tbody>
               <tr>
                 <td>{{shop.openingHours}}</td>
@@ -38,7 +43,7 @@
             </tbody>
           </table>
         </div>
-          <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" id="download-button" class="col right btn waves-effect waves-light">book Services</a>
+        <a ui-sref="salonDetails({salonId: shop._id, serviceId:shop.serviceId})" id="download-button" class="col right btn waves-effect waves-light">book Services</a>
       </div>
     </div>
   </div>

@@ -9,6 +9,9 @@ import {
 import {
   Bookings
 } from '../../../api/bookings'
+import {
+  Shops
+} from '../../../api/shops'
 
 class Checkout {
   constructor($scope, $stateParams, $reactive, $timeout, $state, $rootScope) {
@@ -102,6 +105,7 @@ class Checkout {
     const userId = Meteor.userId()
     const user = Meteor.users.findOne(userId)
     const salonId = $stateParams.salonId;
+    const salon = Shops.findOne({'_id':salonId})
     const serviceId = $stateParams.serviceId;
     const selectedItemsObject = $stateParams.selectedItemsObject;
     const price = $scope.totalPay;
@@ -113,7 +117,7 @@ class Checkout {
       'serviceId': serviceId,
       'selectedItemsObject': selectedItemsObject,
       'price': price,
-      'date': null,
+      'date': new Date(),
       'bookingDate': selectedDate,
       'bookingTime': selectedTime,
       'isCancel': false,
@@ -132,14 +136,49 @@ class Checkout {
           Materialize.toast('Booking Not Confired', 5000)
         } else {
           if (result) {
-            Materialize.toast('Booking Done!', 5000)
-            $state.go('home')
+            Materialize.toast('Booking Done! Please Check Your Profile For Booking Updates', 5000)
+            // For Admin
+            const message = {
+              "attachments": [{
+                "pretext": "Booking Confirmed",
+                "text": "Salon Id" + object.salonId,
+                "author_name": Meteor.user().profile.name,
+                "title": "View Booking @ SalonTrap",
+                "title_link": "https://YourMarch.com",
+                "fields": [{
+                  "title": "Total Amout To Pay",
+                  "value": object.price,
+                  "short": true
+                }, {
+                  "title": "Booking Time",
+                  "value": object.bookingTime,
+                  "short": true
+                }, {
+                  "title": "Bookng Date",
+                  "value": object.bookingDate,
+                  "short": true,
+                }],
+                "color": "warning"
+              }]
+            }
+            Meteor.call('notifySlack', message);
+            // For USer
+            // Booking on %s via SalonTrap at %s-%shas been Confirmed. Pay %s Rupees at Salon.
+            var smsBody = 'Booking on' + salon.name + 'via SalonTrap' +' at' + object.bookingDate + '-' + object.bookingTime + 'has been Confirmed. ' + 'Pay ' + object.price + ' Rupees at Salon.'
+            Meteor.call('sendSMS', user.profile.phoneNumber, smsBody)
+            // For Salon
+            // Booking from SalonTrap at %s-%s. Payment %s will receive.
+            var salonSmsBody = 'Booking from SalonTrap at ' + object.bookingDate + '-' + object.bookingTime +'. Payment ' + object.price + ' will receive.'
+            Meteor.call('sendSMS', salon.mobile, salonSmsBody)
+
+            $state.go('home');
           }
         }
       })
     } else if (!selectedDate) {
       Materialize.toast('Please Select Date', 5000)
-    } else if (!selectedTime) {
+    } else
+    if (!selectedTime) {
       Materialize.toast('Please Select Time', 5000)
     } else if ($stateParams.selectedItemsObject.length === 0) {
       Materialize.toast('Please Select Some Services', 5000)

@@ -19,31 +19,27 @@ class SalonsList {
     'ngInject';
     $reactive(this).attach($scope);
 
+    window.scrollTo(0, 0);
+
     this.scope = $scope;
     this.stateParams = $stateParams;
     this.timeout = $timeout;
-
-    $timeout(function () {
-      $('.carousel.carousel-slider').carousel({fullWidth: true});
-    }, 10);
-
-    $scope.atNgRepeatFinish = function() {
-      $('.carousel.carousel-slider').carousel({fullWidth: true});
-    }
-
 
     this.helpers({
       allShops() {
         return Shops.find({
           'location._id': $stateParams.locationId,
-          "services._id" : $stateParams.serviceId
+          'services._id': $stateParams.serviceId,
+          'isHomeSalon': false
         })
       }
     });
 
     $scope.locationIdToLocation = function(id) {
-      if(id) {
-        return Locations.findOne({'_id':id})
+      if (id) {
+        return Locations.findOne({
+          '_id': id
+        })
       }
     }
   }

@@ -23,7 +23,7 @@ class Profile {
     'ngInject';
 
     $reactive(this).attach($scope);
-
+    window.scrollTo(0, 0);
     $timeout(function() {
       $(document).ready(function() {
         $('ul.tabs').tabs();
@@ -66,6 +66,22 @@ class Profile {
   cancelBooking(id) {
     if (id) {
       Meteor.call('cancelBooking', id, Meteor.userId());
+      const message = {
+        "attachments": [{
+          "pretext": "Booking Canceled",
+          //"text": "Salon Id" + object.salonId,
+          "author_name": Meteor.user().profile.name,
+          "title": "View Booking @ SalonTrap",
+          "title_link": "https://YourMarch.com",
+          "fields": [{
+            "title": "Booking Id",
+            "value": id,
+            "short": true
+          }],
+          "color": "warning"
+        }]
+      }
+      Meteor.call('notifySlack', message);
     }
   }
 }

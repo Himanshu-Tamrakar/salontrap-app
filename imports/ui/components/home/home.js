@@ -16,17 +16,22 @@ import {
 import {
   name as SalonsList
 } from '../salonsList/salonsList'
+import {
+  name as SalonDetails
+} from '../salonDetails/salonDetails'
+import {
+  Shops
+} from '../../../api/shops'
 
 class Home {
-  constructor($log, $scope, $reactive, $timeout, $state, $q, $rootScope) {
+  constructor($scope, $reactive, $timeout, $state) {
     'ngInject';
 
     $reactive(this).attach($scope);
-
+    window.scrollTo(0, 0);
     this.scope = $scope;
     this.timeout = $timeout;
     this.state = $state;
-    this.rootScope = $rootScope;
 
     this.selected = {
       'salonService': null,
@@ -72,9 +77,11 @@ class Home {
 
     $timeout(function() {
       //Slider initializer
-      if(Meteor.Device.isPhone()) {
+      if (Meteor.Device.isPhone()) {
         $(document).ready(function() {
-          $('.slider').slider({'height':200});
+          $('.slider').slider({
+            'height': 200
+          });
         });
       } else {
         $(document).ready(function() {
@@ -122,7 +129,25 @@ class Home {
   }
 
   homeSubmit() {
-    console.log(this.selected.homeService);
+    $state = this.state;
+
+    const shop = Shops.findOne({
+      'isHomeSalon': true
+    })
+
+    if (shop && this.selected.homeService) {
+      const salonId = shop._id
+      const serviceId = shop.serviceId
+      $state.go('salonDetails', {
+        'salonId': salonId,
+        'serviceId': serviceId
+      })
+    } else if(!this.selected.homeService){
+      Materialize.toast('Please Select Some Services', 5000);
+    } else {
+      Materialize.toast('Could not find any Home delivery services', 5000);
+    }
+
   }
 
 }
@@ -135,7 +160,8 @@ export default angular.module(name, [
   angularMeteor,
   uiRouter,
   ngMaterial,
-  SalonsList
+  SalonsList,
+  SalonDetails
 ]).component(name, {
   template,
   controllerAs: name,

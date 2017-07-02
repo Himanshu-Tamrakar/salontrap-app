@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td>{{object.shop.openingHours}}</td>
-            <td>{{object.shop.paymentModes[0]}}</td>
+            <td><span ng-repeat="payment in object.shop.paymentModes">{{payment}} </span></td>
           </tr>
         </tbody>
         <thead>

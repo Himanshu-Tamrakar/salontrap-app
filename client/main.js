@@ -1,7 +1,11 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import { Meteor } from 'meteor/meteor';
-import { name as SalonTrap } from '../imports/ui/components/salontrap/salontrap';
+import {
+  Meteor
+} from 'meteor/meteor';
+import {
+  name as SalonTrap
+} from '../imports/ui/components/salontrap/salontrap';
 
 
 function onReady() {
