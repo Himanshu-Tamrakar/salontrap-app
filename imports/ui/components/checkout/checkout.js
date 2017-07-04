@@ -163,7 +163,7 @@ class Checkout {
                   "color": "warning"
                 }]
               }
-            // Meteor.call('notifySlack', message);
+            Meteor.call('notifySlack', message);
             // For USer
             var allItems = ""
             object.selectedItemsObject.forEach(function(obj) {
