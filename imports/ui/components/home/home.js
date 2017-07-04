@@ -39,23 +39,12 @@ class Home {
       'homeService': null
     }
 
-    $scope.sliderContent = [{
-      'image': "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-5091.jpeg",
-      "heading3": "This is our big Tagline!",
-      "hearding5": "Here's our small slogan."
-    }, {
-      'image': "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-277.jpeg",
-      "heading3": "Left Aligned Caption",
-      "hearding5": "Here's our small slogan."
-    }, {
-      'image': "http://lorempixel.com/580/250/nature/3",
-      "heading3": "Right Aligned Caption",
-      "hearding5": "Here's our small slogan."
-    }, {
-      'image': "http://lorempixel.com/580/250/nature/4",
-      "heading3": "This is our big Tagline!",
-      "hearding5": "Here's our small slogan."
-    }]
+    $scope.headerImage = [
+      "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-5091.jpeg",
+      "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-277.jpeg",
+      "http://lorempixel.com/580/250/nature/3", "http://lorempixel.com/580/250/nature/4"
+    ]
+
 
     $scope.howItsWork = [{
       'image': 'search',
@@ -77,17 +66,11 @@ class Home {
 
     $timeout(function() {
       //Slider initializer
-      if (Meteor.Device.isPhone()) {
-        $(document).ready(function() {
-          $('.slider').slider({
-            'height': 200
-          });
+      $(document).ready(function() {
+        $('.carousel.carousel-slider').carousel({
+          fullWidth: true
         });
-      } else {
-        $(document).ready(function() {
-          $('.slider').slider({});
-        });
-      }
+      });
 
       // Tab initializer
       $(document).ready(function() {
@@ -142,7 +125,7 @@ class Home {
         'salonId': salonId,
         'serviceId': serviceId
       })
-    } else if(!this.selected.homeService){
+    } else if (!this.selected.homeService) {
       Materialize.toast('Please Select Some Services', 5000);
     } else {
       Materialize.toast('Could not find any Home delivery services', 5000);

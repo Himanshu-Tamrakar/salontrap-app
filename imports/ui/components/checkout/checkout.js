@@ -78,8 +78,6 @@ class Checkout {
         max: 15
       });
 
-
-
     }, 100);
 
     this.helpers({
@@ -106,12 +104,15 @@ class Checkout {
     const userId = Meteor.userId()
     const user = Meteor.users.findOne(userId)
     const salonId = $stateParams.salonId;
-    const salon = Shops.findOne({'_id':salonId})
+    const salon = Shops.findOne({
+      '_id': salonId
+    })
     const serviceId = $stateParams.serviceId;
     const selectedItemsObject = $stateParams.selectedItemsObject;
     const price = $scope.totalPay;
     const selectedDate = this.selectedDate;
     const selectedTime = document.getElementById("myTime").value;
+
     const object = {
       'userId': userId,
       'salonId': salonId,
@@ -138,38 +139,43 @@ class Checkout {
         } else {
           if (result) {
             Materialize.toast('Booking Done! Please Check Your Profile For Booking Updates', 5000)
-            // For Admin
+              // For Admin
             const message = {
-              "attachments": [{
-                "pretext": "Booking Confirmed",
-                "text": "Salon Id" + object.salonId,
-                "author_name": Meteor.user().profile.name,
-                "title": "View Booking @ SalonTrap",
-                "title_link": "https://YourMarch.com",
-                "fields": [{
-                  "title": "Total Amout To Pay",
-                  "value": object.price,
-                  "short": true
-                }, {
-                  "title": "Booking Time",
-                  "value": object.bookingTime,
-                  "short": true
-                }, {
-                  "title": "Bookng Date",
-                  "value": object.bookingDate,
-                  "short": true,
-                }],
-                "color": "warning"
-              }]
-            }
-            Meteor.call('notifySlack', message);
+                "attachments": [{
+                  "pretext": "Booking Confirmed",
+                  "text": "Salon Id" + object.salonId,
+                  "author_name": Meteor.user().profile.name,
+                  "title": "View Booking @ SalonTrap",
+                  "title_link": "https://YourMarch.com",
+                  "fields": [{
+                    "title": "Total Amout To Pay",
+                    "value": object.price,
+                    "short": true
+                  }, {
+                    "title": "Booking Time",
+                    "value": object.bookingTime,
+                    "short": true
+                  }, {
+                    "title": "Bookng Date",
+                    "value": object.bookingDate,
+                    "short": true,
+                  }],
+                  "color": "warning"
+                }]
+              }
+            // Meteor.call('notifySlack', message);
             // For USer
-            // Booking on %s via SalonTrap at %s-%shas been Confirmed. Pay %s Rupees at Salon.
-            var smsBody = 'Booking on' + salon.name + 'via SalonTrap' +' at' + object.bookingDate + '-' + object.bookingTime + 'has been Confirmed. ' + 'Pay ' + object.price + ' Rupees at Salon.'
+            var allItems = ""
+            object.selectedItemsObject.forEach(function(obj) {
+              allItems += obj.subServiceName + ","
+            })
+            const smsBody = "Hi " + user.profile.name + ". Your booking for " + allItems + "is confirmed on " + object.bookingDate + " - " + object.bookingTime + " at " + salon.name + ". Pay " + object.price + " at Salon. Please reach 5 min before time and call 7992367464 for any query."
+            // var smsBody = 'Booking on' + salon.name + 'via SalonTrap' +' at' + object.bookingDate + '-' + object.bookingTime + 'has been Confirmed. ' + 'Pay ' + object.price + ' Rupees at Salon.'
             Meteor.call('sendSMS', user.profile.phoneNumber, smsBody)
+
             // For Salon
-            // Booking from SalonTrap at %s-%s. Payment %s will receive.
-            var salonSmsBody = 'Booking from SalonTrap at ' + object.bookingDate + '-' + object.bookingTime +'. Payment ' + object.price + ' will receive.'
+            // var salonSmsBody = 'Booking from SalonTrap at ' + object.bookingDate + '-' + object.bookingTime +'. Payment ' + object.price + ' will receive.'
+            const salonSmsBody = "Booking from, " + user.profile.name + " For " + allItems + " on " + object.bookingDate + " - " + object.bookingTime + ". Payment " + object.price + "rupees."
             Meteor.call('sendSMS', salon.mobile, salonSmsBody)
 
             $state.go('home');

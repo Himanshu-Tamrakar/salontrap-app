@@ -1,15 +1,7 @@
 <!-- FIRST ROW -->
-<div class="slider_div">
-  <div class="slider" style="width:100%;margin: 0 auto;">
-    <ul class="slides">
-      <li ng-repeat="sliderObject in sliderContent">
-        <img src={{sliderObject.image}}>
-        <div class="caption center-align">
-          <h3>{{sliderObject.heading3}}</h3>
-          <h5 class="light grey-text text-lighten-3">{{sliderObject.hearding5}}</h5>
-        </div>
-      </li>
-    </ul>
+<div style="margin-top:5px" class="carousel carousel-slider center" data-indicators="true">
+  <div ng-repeat="image in headerImage" class="carousel-item" href="#one!">
+    <img height="400px" src="{{image}}">
   </div>
 </div>
 

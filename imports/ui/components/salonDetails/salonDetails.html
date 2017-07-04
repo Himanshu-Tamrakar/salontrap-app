@@ -72,8 +72,9 @@
       <li>
         <div class="collapsible-header"><i class="material-icons">menu</i>{{serviceIdToService(service._id).name}}</div>
         <div class="collapsible-body">
+          <!-- subservice in filterServices(service._id, object.services.services) track by $index -->
           <form>
-            <p id="collection-item-id" class="collection-item" ng-repeat="subservice in filterServices(service._id, object.services.services) track by $index" style="overflow: visible;">
+            <p id="collection-item-id" class="collection-item" ng-repeat="subservice in object.services.services | filter:{'serviceId':service._id} track by $index" style="overflow: visible;">
               <input ng-model="salonAllDetails.test" ng-change="onCheckboxClicked()" name='subservice' value="{{subservice}}" type="checkbox" class="filled-in" id="{{subservice}}" />
               <label class="black-text" for="{{subservice}}">{{subservice.subServiceName}} - {{subservice.price}}RS</label>
               <br>

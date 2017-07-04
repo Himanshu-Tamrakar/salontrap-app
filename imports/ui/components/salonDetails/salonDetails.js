@@ -60,12 +60,12 @@ class SalonDetails {
       }
     }
 
-    $scope.filterServices = function(serviceId, services) {
-      var result = services.filter(function(obj) {
-        return obj.serviceId == serviceId;
-      });
-      return result
-    }
+    // $scope.filterServices = function(serviceId, services) {
+    //   var result = services.filter(function(obj) {
+    //     return obj.serviceId == serviceId;
+    //   });
+    //   return result
+    // }
 
     $scope.atNgRepeatFinish = function() {
       $(document).ready(function() {
