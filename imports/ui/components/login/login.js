@@ -17,20 +17,6 @@ class Login {
     $reactive(this).attach($scope);
     this.scope = $scope;
 
-    this.phoneNumber = "";
-    this.otp = "";
-    $scope.first = true;
-    $scope.second = false;
-    $scope.third = false;
-
-    $scope.chageValue = function(first, second, third) {
-      $timeout(function() {
-        $scope.first = first;
-        $scope.second = second;
-        $scope.third = third;
-      }, 30);
-    }
-
 
 
     $timeout(function() {
@@ -42,25 +28,7 @@ class Login {
   }
 
 
-  checkPhoneNumber = function(phoneNumber) {
-    var regex = /^\d{10}$/;
-    if (phoneNumber.match(regex)) {
-      return true;
-    } else {
-      Materialize.toast('Please enter valid mobile number', 4000);
-      return false;
-    }
-  }
 
-  oneStepBack() {
-    $scope = this.scope;
-    if ($scope.third) {
-      $scope.chageValue(false, true, false)
-    } else if ($scope.second) {
-      $scope.chageValue(true, false, false)
-    }
-
-  }
   loginWithFacebook() {
     $scope = this.scope;
     Meteor.loginWithFacebook({
@@ -69,52 +37,10 @@ class Login {
       if (error) {
         console.log(error);
       } else {
-        if (!Meteor.user().profile.verify) {
-          $scope.chageValue(false, true, false);
-        } else {
-          $('.modal').modal('close');
-        }
+        $('.modal').modal('close');
         Materialize.toast('Wecome! You are successfully loggedin', 4000);
       }
     })
-  }
-
-  sendOtp() {
-    phoneNumber = this.phoneNumber;
-    checkPhoneNumber = this.checkPhoneNumber;
-    $scope = this.scope;
-
-    if (checkPhoneNumber(phoneNumber)) {
-      Meteor.call('sendOtp', phoneNumber, function(error, result) {
-        if (error) {
-          Materialize.toast('Sending Opt Unsuccessfull', 4000);
-        } else {
-          Materialize.toast('Opt Sent successfully', 4000);
-          if (result) {
-            $scope.chageValue(false, false, true);
-          }
-        }
-      });
-    }
-  }
-
-  verifyOpt() {
-    if (parseInt(Meteor.user().profile.otp.toString()) == parseInt(this.otp)) {
-      Meteor.users.update({
-        '_id': Meteor.userId()
-      }, {
-        $set: {
-          'profile.verify': true
-        }
-      }, function(error) {
-        if (!error) {
-          $('.modal').modal('close');
-          Materialize.toast('Mobile Verified Successfull', 4000);
-        }
-      })
-    } else {
-      Materialize.toast("OPT didn't match", 4000);
-    }
   }
 }
 

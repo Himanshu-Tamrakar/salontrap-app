@@ -1,11 +1,10 @@
 App.info({
-    id: 'com.salontrap.app',
+    id: 'com.saloncare.app',
     version: '0.1.0',
-    name: 'Hiyo',
-    author: 'Hiyo Technologies',
-    description: 'Hiyo is an event based vehicle sharing app which helps in sharing vehicles with co-attendees to the event venue.',
-    email: 'hello@hiyoapp.com',
-    website: 'http://hiyoapp.com'
+    name: 'SalonCare',
+    description: "SalonCare is a network of Salon's and spas With us now you can book you salon in just your finger tips , Now no more waiting in the salon just select your time and enjoy the service.",
+    // email: 'hello@hiyoapp.com',
+    // website: 'http://hiyoapp.com'
 });
 
 App.setPreference('Orientation', 'portrait');
