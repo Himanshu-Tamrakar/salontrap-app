@@ -21,10 +21,11 @@ App.icons({
 });
 
 App.launchScreens({
-    'android_mdpi_portrait': 'resources/splash/drawable-mdpi/screen.png',
-    'android_hdpi_portrait': 'resources/splash/drawable-hdpi/screen.png',
-    'android_xhdpi_portrait': 'resources/splash/drawable-xhdpi/screen.png',
-    'android_xxhdpi_portrait': 'resources/splash/drawable-xxhdpi/screen.png',
+    'android_mdpi_portrait': 'resources/splash/drawable-mdpi/screen.9.png',
+    'android_hdpi_portrait': 'resources/splash/drawable-hdpi/screen.9.png',
+    'android_xhdpi_portrait': 'resources/splash/drawable-xhdpi/screen.9.png',
+    'android_xxhdpi_portrait': 'resources/splash/drawable-xxhdpi/screen.9.png',
+    'android_xxxhdpi_portrait': 'resources/splash/drawable-xxxhdpi/screen.9.png',
 
 });
 
