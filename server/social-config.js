@@ -5,6 +5,6 @@ ServiceConfiguration.configurations.remove({
 ServiceConfiguration.configurations.insert({
     service: 'facebook',
 
-    appId: '468465353496646',
-    secret: 'e8c4373587fc87d1454c576e50ee653d'
+    appId: '668120650049837',
+    secret: '8fe3d455e0e7a99ad4a54e35c4a1513d'
 });
