@@ -12,8 +12,24 @@ App.setPreference('Orientation', 'portrait');
 App.accessRule("*");
 
 
-App.setPreference('BackgroundColor', '0xff0000ff');
-App.setPreference('HideKeyboardFormAccessoryBar', true);
+App.icons({
+    'android_mdpi': 'resources/icons/mipmap-mdpi/ic_launcher.png',
+    'android_hdpi': 'resources/icons/mipmap-hdpi/ic_launcher.png',
+    'android_xhdpi': 'resources/icons/mipmap-xhdpi/ic_launcher.png',
+    'android_xxhdpi': 'resources/icons/mipmap-xxhdpi/ic_launcher.png',
+    'android_xxxhdpi': 'resources/icons/mipmap-xxxhdpi/ic_launcher.png'
+});
+
+App.launchScreens({
+    'android_mdpi_portrait': 'resources/splash/drawable-mdpi/screen.png',
+    'android_mdpi_landscape': 'resources/splash/drawable-land-mdpi/screen.png',
+    'android_hdpi_portrait': 'resources/splash/drawable-hdpi/screen.png',
+    'android_hdpi_landscape': 'resources/splash/drawable-land-hdpi/screen.png',
+    'android_xhdpi_portrait': 'resources/splash/drawable-xhdpi/screen.png',
+    'android_xhdpi_landscape': 'resources/splash/drawable-land-xhdpi/screen.png',
+    'android_xxhdpi_portrait': 'resources/splash/drawable-xxhdpi/screen.png',
+    'android_xxhdpi_landscape': 'resources/splash/drawable-land-xxhdpi/screen.png'
+});
 
 App.setPreference('WebAppStartupTimeout', 1000000);
 App.setPreference("LoadUrlTimeoutValue", 1000000)
