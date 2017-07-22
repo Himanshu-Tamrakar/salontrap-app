@@ -22,13 +22,10 @@ App.icons({
 
 App.launchScreens({
     'android_mdpi_portrait': 'resources/splash/drawable-mdpi/screen.png',
-    'android_mdpi_landscape': 'resources/splash/drawable-land-mdpi/screen.png',
     'android_hdpi_portrait': 'resources/splash/drawable-hdpi/screen.png',
-    'android_hdpi_landscape': 'resources/splash/drawable-land-hdpi/screen.png',
     'android_xhdpi_portrait': 'resources/splash/drawable-xhdpi/screen.png',
-    'android_xhdpi_landscape': 'resources/splash/drawable-land-xhdpi/screen.png',
     'android_xxhdpi_portrait': 'resources/splash/drawable-xxhdpi/screen.png',
-    'android_xxhdpi_landscape': 'resources/splash/drawable-land-xxhdpi/screen.png'
+
 });
 
 App.setPreference('WebAppStartupTimeout', 1000000);
