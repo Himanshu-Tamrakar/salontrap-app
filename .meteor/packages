@@ -20,6 +20,7 @@ pbastowski:angular-babel
 urigo:static-templates
 materialize:materialize
 accounts-facebook
+accounts-google@1.1.1
 service-configuration
 random
 mystor:device-detection

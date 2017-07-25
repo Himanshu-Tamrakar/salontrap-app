@@ -2,17 +2,22 @@
   <div class="col s12">
     <i ng-show="!first" ng-click="login.oneStepBack()" class="material-icons">keyboard_arrow_left</i>
     <div class="center">
-      <div class="row" style="margin-top:10px;">
-          <div class="col s12 center">
-              <div class="flow-text" style="font-size: small; color: #BDBDBD">
-                  <i class="material-icons tiny" style="vertical-align: middle; margin-bottom: 4px">lock</i> We won't post on behalf of you and keep your identity secure.
-                  <br>By creating an account you agree to our <a href="" ui-sref="info" class="hover-underline" style="color: #BDBDBD" target="_blank">Terms of Service</a> and
-              </div>
-          </div>
-      </div>
+
       <button ng-show="first" ng-click="login.loginWithFacebook()" class="loginBtn loginBtn--facebook">
          Login with Facebook
       </button>
+      <button ng-show="first" ng-click="login.loginWithGoogle()" class="loginBtn loginBtn--google">
+        Login with Google
+      </button>
+
+      <div class="row" style="margin-top:10px;">
+        <div class="col s12 center">
+          <div class="flow-text" style="font-size: small; color: #BDBDBD">
+            <i class="material-icons tiny" style="vertical-align: middle; margin-bottom: 4px">lock</i> We won't post on behalf of you and keep your identity secure.
+            <br>By creating an account you agree to our <a href="" ui-sref="info" style="color: #BDBDBD" target="_blank">Terms of Service</a> and
+          </div>
+        </div>
+      </div>
 
       <form ng-show="second">
         <div class="input-field">

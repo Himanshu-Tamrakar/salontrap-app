@@ -79,6 +79,24 @@ class Login {
     })
   }
 
+  loginWithGoogle() {
+    $scope = this.scope;
+    Meteor.loginWithGoogle({
+      requestPermissions: ['https://www.googleapis.com/auth/contacts.readonly', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
+    }, function(error) {
+      if (error) {
+        console.log(error);
+      } else {
+        if (!Meteor.user().profile.verify) {
+          $scope.chageValue(false, true, false);
+        } else {
+          $('.modal').modal('close');
+        }
+        Materialize.toast('Wecome! You are successfully loggedin', 4000);
+      }
+    })
+  }
+
   sendOtp() {
     phoneNumber = this.phoneNumber;
     checkPhoneNumber = this.checkPhoneNumber;
