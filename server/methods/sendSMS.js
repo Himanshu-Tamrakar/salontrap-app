@@ -24,7 +24,8 @@ Meteor.methods({
 
     const otp = code;
     var to = contact;
-    var body = "Hiyo, Please use " + otp + " as the code to verify your mobile number.";
+    var body = "SalonTrap, Please use" + otp + "as the code to verify your mobile number."
+    // var body = "Hiyo, Please use " + otp + " as the code to verify your mobile number.";
     var payload = {
       from: '040-395-60705',
       To: to,
