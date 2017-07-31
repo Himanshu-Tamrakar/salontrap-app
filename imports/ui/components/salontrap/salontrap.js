@@ -7,55 +7,55 @@ import {
     Meteor
 } from 'meteor/meteor';
 import {
-  name as Navigation
+    name as Navigation
 } from '../navigation/navigation';
 import {
-  name as Home
+    name as Home
 } from '../home/home';
 import {
-  name as Privacy
+    name as Privacy
 } from '../privacy/privacy'
 import {
-  name as About
-} from '../about/about'
+    name as Info
+} from '../info/info';
 
 class SalonTrap {
-  constructor($scope, $reactive, $rootScope, $state, $timeout) {
+    constructor($scope, $reactive, $rootScope, $state, $timeout) {
 
-    'ngInject';
-    $reactive(this).attach($scope);
+        'ngInject';
+        $reactive(this).attach($scope);
 
-    this.state = $state;
-    this.timeout = $timeout;
-    this.scope = $scope;
-    this.rootScope = $rootScope;
-  }
+        this.state = $state;
+        this.timeout = $timeout;
+        this.scope = $scope;
+        this.rootScope = $rootScope;
+    }
 }
 const name = 'salontrap';
 
 export default angular.module(name, [
-  angularMeteor,
-  uiRouter,
-  ngMaterial,
-  Navigation,
-  Home,
-  Privacy,
-  About
+    angularMeteor,
+    uiRouter,
+    ngMaterial,
+    Navigation,
+    Home,
+    Privacy,
+    Info
 ]).component(name, {
-  template,
-  controllerAs: name,
-  controller: SalonTrap
+    template,
+    controllerAs: name,
+    controller: SalonTrap
 }).config(config);
 
 function config($locationProvider, $urlRouterProvider, $stateProvider) {
-  'ngInject';
+    'ngInject';
 
-  $stateProvider.state('salontrap', {
-      abstract: true,
-      template: '<salontrap></salontrap>'
-  });
+    $stateProvider.state('salontrap', {
+        abstract: true,
+        template: '<salontrap></salontrap>'
+    });
 
-  $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
-  $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home');
 }

@@ -1,38 +1,40 @@
 <!--Side nav bar content -->
 <ul id="slide-out" class="side-nav fixed">
-  <li>
-    <div class="user-view">
-      <div class="background">
-        <img src="background-navbar.jpg" style="width: 260px; height: 160px">
-      </div>
-    </div>
-  </li>
-  <li><a href="/home" class="waves-effect">Home</a></li>
-  <li><a ui-sref="about" class="black-text darken-4" href="">About</a></li>
-  <li ng-show="!navigation.isUserLoggedIn">
-    <a class="black-text darken-4" href="#loginModel" ng-init="loginModelInitilize()">Login</a>
-  </li>
-  <li ng-show="navigation.isUserLoggedIn"><a href="/profile">Profile</a></li>
-  <li><div class="divider"></div></li>
-  <li><a ng-click="navigation.logout()" href="">LogOut</a></li>
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="background-navbar.jpg" style="width: 260px; height: 160px">
+            </div>
+        </div>
+    </li>
+    <li><a href="/home" class="waves-effect">Home</a></li>
+    <li><a class="black-text darken-4" ui-sref="info">About</a></li>
+    <li ng-show="!navigation.isUserLoggedIn">
+        <a class="black-text darken-4" href="#loginModel" ng-init="loginModelInitilize()">Login</a>
+    </li>
+    <li ng-show="navigation.isUserLoggedIn"><a href="/profile">Profile</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a ng-click="navigation.logout()" href="">LogOut</a></li>
 </ul>
 
 <div class="navbar-fixed">
-  <nav class="white">
-    <div class="nav-wrapper container">
-      <!--Logo -->
-      <div class="center-align center">
-          <a href="/home" class="brand-logo" ><img id="header-logo" class="responsive-img" src="/logo.png" style="margin-top:10px;height: 55%; width: 35%"></a>
-      </div>
-      <!--Side Nav bar -->
-      <a data-activates="slide-out" class="button-collapse show-on-large"><i class="red-text text-darken-4 material-icons">menu</i></a>
-    </div>
-  </nav>
+    <nav class="white">
+        <div class="nav-wrapper container">
+            <!--Logo -->
+            <div class="center-align center">
+                <a href="/home" class="brand-logo"><img id="header-logo" class="responsive-img" src="/logo.png" style="margin-top:10px;height: 55%; width: 35%"></a>
+            </div>
+            <!--Side Nav bar -->
+            <a data-activates="slide-out" class="button-collapse show-on-large"><i class="red-text text-darken-4 material-icons">menu</i></a>
+        </div>
+    </nav>
 </div>
 
 <div id="loginModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-content" style="width:100%;height:100%">
-    <login></login>
-    <button class="modal-close btn-flat" style="position: absolute; top:0; right:0;"><i class="material-icons" style="color: #898F9C">close</i></button>
-  </div>
+    <div class="modal-content" style="width:100%;height:100%">
+        <login></login>
+        <button class="modal-close btn-flat" style="position: absolute; top:0; right:0;"><i class="material-icons" style="color: #898F9C">close</i></button>
+    </div>
 </div>
