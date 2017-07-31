@@ -13,9 +13,6 @@ import {
     name as Home
 } from '../home/home';
 import {
-    name as Privacy
-} from '../privacy/privacy'
-import {
     name as Info
 } from '../info/info';
 
@@ -39,7 +36,6 @@ export default angular.module(name, [
     ngMaterial,
     Navigation,
     Home,
-    Privacy,
     Info
 ]).component(name, {
     template,
