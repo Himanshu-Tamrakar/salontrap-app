@@ -1,20 +1,21 @@
-<!-- FIRST ROW -->
-<div style="margin-top:5px" class="carousel carousel-slider center" data-indicators="true">
-  <div ng-repeat="image in headerImage" class="carousel-item" href="#one!">
-    <img height="400px" src="{{image}}">
+
+  <!-- FIRST ROW -->
+  <div style="margin-top:5px" class="carousel carousel-slider center" data-indicators="true">
+    <div ng-repeat="image in headerImage" class="carousel-item" href="#one!">
+      <img height="400px" src="{{image}}">
+    </div>
   </div>
-</div>
 
 <div class="container">
   <!-- SECOND -->
-  <div class="row">
+  <div class="row" style="margin-top:10px;">
     <div class="col s12">
-      <div class="card-panel z-depth-0">
+      <div class="card-panel">
         <div class="row">
-          <div class="col s8">
+          <div class="col s12">
             <ul class="tabs">
-              <li class="active tab col s2"><a href="#salon-service">Salon</a></li>
-              <li class="tab col s2"><a class="" href="#home-service">Home</a></li>
+              <li class="active tab col s4"><a href="#salon-service"><b>Salon</b></a></li>
+              <li class="tab col s4"><a class="" href="#home-service"><b>Home</b></a></li>
             </ul>
           </div>
           <div>
@@ -64,12 +65,18 @@
         <h5>How saloonTrap Works</h5>
       </li>
       <div ng-repeat="object in howItsWork">
-        <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
-          <div class="col s12 center">
+        <div class="row" style="cursor:pointer">
+          <div class="col s12 style_prevu_kit center">
             <i class="material-icons small">{{object.image}}</i>
             <li class="center"><span>{{object.content}}</span></li>
           </div>
         </div>
+        <!-- <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
+          <div class="col s12 center">
+            <i class="material-icons small">{{object.image}}</i>
+            <li class="center"><span>{{object.content}}</span></li>
+          </div>
+        </div> -->
       </div>
     </ul>
   </div>
