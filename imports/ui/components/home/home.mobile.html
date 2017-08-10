@@ -62,12 +62,18 @@
       <h5>How saloonTrap Works</h5>
     </li>
     <div ng-repeat="object in howItsWork">
-      <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
-        <div class="col s12 center">
+      <div class="row" style="cursor:pointer">
+        <div class="col s12 style_prevu_kit center">
           <i class="material-icons small">{{object.image}}</i>
           <li class="center"><span>{{object.content}}</span></li>
         </div>
       </div>
+      <!-- <div class="collection-item row" ng-class="{teal : $index == row}" ng-click="colorRow($index)" style="cursor:pointer">
+        <div class="col s12 center">
+          <i class="material-icons small">{{object.image}}</i>
+          <li class="center"><span>{{object.content}}</span></li>
+        </div>
+      </div> -->
     </div>
   </ul>
 </div>
