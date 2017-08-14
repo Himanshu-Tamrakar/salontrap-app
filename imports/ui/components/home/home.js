@@ -40,9 +40,7 @@ class Home {
     }
 
     $scope.headerImage = [
-      "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-5091.jpeg",
-      "https://d3p959fz8jdi04.cloudfront.net/suggestadoc/images/gallery/cards/1/171/20170529-190556-277.jpeg",
-      "http://lorempixel.com/580/250/nature/3", "http://lorempixel.com/580/250/nature/4"
+      'https://s3.ap-south-1.amazonaws.com/salontrap-images/1.jpg','https://s3.ap-south-1.amazonaws.com/salontrap-images/2.jpg','https://s3.ap-south-1.amazonaws.com/salontrap-images/3.jpg','https://s3.ap-south-1.amazonaws.com/salontrap-images/4.jpg'
     ]
 
 
