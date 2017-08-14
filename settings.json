@@ -1,0 +1,11 @@
+{
+  "public": {
+    "analyticsSettings": {
+      "Google Analytics": {
+        "trackingId": "UA-103802851-1",
+        "sendUserId": true
+      },
+      "autorun": true
+    }
+  }
+}
