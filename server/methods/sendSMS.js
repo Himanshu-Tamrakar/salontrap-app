@@ -26,13 +26,13 @@ Meteor.methods({
     var to = contact;
     var body = "Hiyo, Please use " + otp + " as the code to verify your mobile number.";
     var payload = {
-      from: '040-395-60705',
+      from: 'number',
       To: to,
       Body: body,
       Priority: 'high'
     }
 
-    request.post('https://hiyoapp:1f258cf4e6e8de9d986a32d63fd0c736261430d2@twilix.exotel.in/v1/Accounts/hiyoapp/Sms/send', {
+    request.post('URL', {
       form: payload
         //headers: headers
     }, Meteor.bindEnvironment(function(error, response, body) {
